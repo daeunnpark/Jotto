@@ -1,18 +1,16 @@
-/*const nameInput = document.querySelector("input");*/
 const nameInput = document.getElementById("name");
-const form = document.querySelector("form");
+/*Now working only with first input field */
+/* not working with byClassName */
 
-nameInput.addEventListener("name", () => {
+nameInput.addEventListener("input", () => {
   nameInput.setCustomValidity("");
   nameInput.checkValidity();
 });
 
 nameInput.addEventListener("invalid", () => {
   if (nameInput.value === "") {
-    nameInput.setCustomValidity("Enter your username!");
+    nameInput.setCustomValidity("Enter your guess.");
   } else {
-    nameInput.setCustomValidity(
-      "Usernames can only contain upper and lowercase letters. Try again!"
-    );
+    nameInput.setCustomValidity("Your guess can only contain letters.");
   }
 });

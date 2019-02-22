@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <form id="signUpForm">
-    <input type="email" id="emailField" required />
-    <button id="okButton" disabled>OK</button>
+  <form>
+    <label for="name">Enter username (upper and lowercase letters): </label>
+    <input type="text" name="name" id="name" required pattern="[A-Za-z]+" />
+    <button>Submit</button>
   </form>
 
   <script>
-    const signUpForm = document.getElementById("signUpForm");
-    const emailField = document.getElementById("emailField");
-    const okButton = document.getElementById("okButton");
+    const nameInput = document.querySelector("input");
+    /*const form = document.querySelector("form");*/
 
-    emailField.addEventListener("keyup", function(event) {
-      isValidEmail = emailField.checkValidity();
-
-      if (isValidEmail) {
-        okButton.disabled = false;
-      } else {
-        okButton.disabled = true;
-      }
+    nameInput.addEventListener("input", () => {
+      nameInput.setCustomValidity("");
+      nameInput.checkValidity();
     });
 
-    okButton.addEventListener("click", function(event) {
-      signUpForm.submit();
+    nameInput.addEventListener("invalid", () => {
+      if (nameInput.value === "") {
+        nameInput.setCustomValidity("Enter your username!");
+      } else {
+        nameInput.setCustomValidity(
+          "Usernames can only contain upper and lowercase letters. Try again!"
+        );
+      }
     });
   </script>
 </html>

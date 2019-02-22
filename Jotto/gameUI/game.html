@@ -267,55 +267,61 @@
                     </tbody>
                   </table>
                 </div>
-
-                <div class="block_container">
-                  <form>
-                    <div class="col-md-8">
-                      <table class="inputTable">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                required
-                                pattern="a"
-                              />
-                            </td>
-                            <td><input type="text" name="letter_1" /></td>
-                            <td><input type="text" name="letter_1" /></td>
-                            <td><input type="text" name="letter_1" /></td>
-                            <td><input type="text" name="letter_1" /></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <div class="col-md-4">
-                      <button type="button">Enter</button>
-                    </div>
-                  </form>
-                  <script>
-                    const nameInput = document.getElementById("name");
-                    const form = document.querySelector("form");
-
-                    nameInput.addEventListener("name", () => {
-                      nameInput.setCustomValidity("");
-                      nameInput.checkValidity();
-                    });
-
-                    nameInput.addEventListener("invalid", () => {
-                      if (nameInput.value === "") {
-                        nameInput.setCustomValidity("Enter your username!");
-                      } else {
-                        nameInput.setCustomValidity(
-                          "Usernames can only contain upper and lowercase letters. Try again!"
-                        );
-                      }
-                    });
-                  </script>
-                </div>
+                
+                <div class="block_input">
+                <form>
+                  <input
+                    type="text"
+                    name="letter_1"
+                    id="name"
+                    required
+                    pattern="[A-Za-z]"
+                    maxlength="1"
+                    size=2;
+                    
+ 
+                  />
+                  <input
+                    type="text"
+                    name="letter_2"
+                    id="name"
+                    required
+                    pattern="[A-Za-z]"
+                    maxlength="1"
+                    size=2;
+                  />
+                  <input
+                    type="text"
+                    name="letter_3"
+                    id="name"
+                    required
+                    pattern="[A-Za-z]"
+                    maxlength="1"
+                    size=2;
+                  />
+                  <input
+                    type="text"
+                    name="letter_4"
+                    id="name"
+                    required
+                    pattern="[A-Za-z]"
+                    maxlength="1"
+                    size=2;
+                  />
+                  <input
+                    type="text"
+                    name="letter_5"
+                    id="name"
+                    required
+                    pattern="[A-Za-z]"
+                    maxlength="1"
+                    size=2;
+                  />
+                  
+                  <button>Enter</button>
+                  </div>
+                </form>
+                <script src="input.js"></script>
               </div>
             </div>
             <!-- END Col two -->
