@@ -1,134 +1,65 @@
-h1 {
-  text-align: center;
-  font-size: 1.8em;
-  font-family: monospace;
-  padding: 0.7em;
+body {
+  font-family: Lato;
+  font-weight: 300;
+  background: #7c7972;
 }
 
-.keyboard {
-  text-align: center;
-  font-size: 14px;
-  font-family: sans-serif;
-}
 
-.keyboard__row {
-  display: inline-block;
-  height: 3em;
-  margin: 0.2em;
-}
-
-.keyboard__row--h1 {
-  height: 1.7em;
-  line-height: 1.4em;
-}
-
-.keyboard__row--h3 {
-  height: 3.3em;
-}
-
-.keyboard__row > * {
-  position: relative;
-  background: #333;
-  text-align: center;
-  color: #eee;
-  float: left;
-  border-radius: 0.3em;
-  margin: 0.2em;
-  padding: 0.2em;
-  width: 3.3em;
-  height: 100%;
-  box-sizing: border-box;
+td {
+  width: 75px;
+  height: 60px;
+  background:#fff;
+  /*background: -linear-gradient(315deg, rgb(173, 19, 19) 45px, #2a2a2a 50px);*/
+  /*background: -webkit-linear-gradient(310deg, black 45px, #2a2a2a 50px);*/
+  color: #000000;
+  /*text-shadow: 0px 0px 3px #1976d2;*/
+  /* padding: 20px 30px; */
+  /* margin: 5px; */
+  /* border: 1px solid #444; */
+  /* border-radius: 5px; */
+  
+  box-shadow: 0px 0px 2px white;
+  font-size: 20px;
+  font-family: Lato;
+  font-weight: 100;
   cursor: pointer;
-  -webkit-user-select: none;
-  border: 1px solid #444;
-  box-shadow: 0 0.2em 0 0.05em #222;
-  border-bottom-color: #555;
-}
-
-.keyboard__row--h1 > div {
-  width: 3.5em;
-}
-
-.keyboard__row > div[data-pressed],
-.keyboard__row > div:active {
-  background: #2a2a2a;
-  color: #aaa;
-  position: relative;
-  top: 0.2em;
-  box-shadow: 0 0 0 0.05em black;
-}
-
-.key--w3 {
-  width: 4.6em;
-}
-
-.key--w4 {
-  width: 6em;
-}
-
-.key--w5 {
-  width: 6.5em;
-}
-
-.key--w6 {
-  width: 8.3em;
-}
-
-.key--space {
-  width: 18em;
-}
-
-.key--double > * {
-  padding-top: 0.1em;
-}
-
-.key--letter {
-  line-height: 2.8em;
-}
-
-.key--bottom-left > * {
-  position: absolute;
-  text-align: left;
-  bottom: 0.4em;
-  left: 0.4em;
-}
-
-.key--bottom-right > * {
-  position: absolute;
-  text-align: right;
-  bottom: 0.4em;
-  right: 0.4em;
-}
-
-.key--fn > * {
-  font-size: 0.6em;
-  line-height: 1em;
-  padding-top: 1.2em;
-  padding-right: 0.2em;
-  text-align: right;
-  float: right;
-}
-
-.key--word > * {
-  font-size: 0.8em;
-}
-
-.key--arrow--tall > *,
-.key--arrow > * {
-  font-size: 0.5em;
-  line-height: 3em;
-}
-
-.key--arrow {
-  height: 1.8em;
-  margin-top: 1.7em;
-  line-height: 0.5em;
-}
-
-.key--arrow--tall > * {
-  padding-top: 0.2em;
-}
-
-.keyboard > .keyboard__row {
   text-align: center;
+}
+
+td:hover {
+  background: red;
+  /*outline: #2196f3;*/
+}
+.wide {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.operator {
+  background: #555;
+  background: -linear-gradient(315deg, #555 45px, #666 50px);
+  background: -webkit-linear-gradient(310deg, #555 45px, #666 50px);
+}
+
+.operator:hover {
+  background: #777;
+}
+
+.equals {
+  background: #2196f3;
+  background: -linear-gradient(315deg, black 45px, #333 50px);
+  background: -webkit-linear-gradient(310deg, #1e88e5 45px, #2196f3 50px);
+  color: white;
+}
+
+.equals:hover {
+  background: #42a5f5;
+}
+
+#level3 {
+  margin: 0;
+}
+#level3 td {
+  padding-left: 0;
+  padding-right: 0;
 }
