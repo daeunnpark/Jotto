@@ -1,0 +1,16 @@
+body{
+    background-color: #79C043;
+}
+
+#loginButton{
+    font-size: x-large;
+    background-color: #19a3ff;
+}
+
+#headerDiv{
+    text-align: center;
+}
+
+#loginButtonDiv{
+    text-align: center;
+}
