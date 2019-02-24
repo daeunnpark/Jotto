@@ -26,7 +26,7 @@
 
             <!-- START COMPUTER -->
             <div class="col-md-6">
-              <div class="card text-center">
+              <div class="card text-center" >
                 <div class="title">
                   <i class="fa fa-robot" aria-hidden="true"></i>
                   <h2>Computer</h2>
@@ -317,6 +317,110 @@
             
                             <td>Z</td>
                           </tr>
+                          <script>
+                            /*
+                                document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("mouseover", function() {
+                                this.style.background = "green";
+                              }));
+                              
+                              document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("mouseleave", function() {
+                                this.style.background = "white";
+                              }));
+*/
+
+                              document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("click", function() {
+                                
+                                if(this.style.backgroundColor == "green"){ 
+                                  this.style.backgroundColor = "red";
+                                  this.setAttribute("id", "red");
+
+                                }
+                                
+                                else if(this.style.backgroundColor == "red"){
+                                  this.style.backgroundColor = "white";
+                                  this.setAttribute("id", "white");
+
+                              
+                                }
+                                else if(this.style.backgroundColor == "white"){
+                                  this.style.backgroundColor = "green";
+                                  this.setAttribute("id", "green");
+
+                              
+                                }else{ // first click
+                                  this.style.backgroundColor = "green";
+                                  this.setAttribute("id", "green");
+                                }
+
+
+                              
+                              this.onmouseover = function(){
+                                  //window.alert(this.style.backgroundColor);
+                                     
+                                if(this.id == "green"){ // hovering is green
+                                  this.style.backgroundColor = "red";
+
+                                }
+                                
+                                else if(this.style.backgroundColor == "red"){
+                                  this.style.backgroundColor = "white";
+
+                              
+                                }
+                                else if(this.style.backgroundColor == "white"){
+                                  this.style.backgroundColor = "green";
+
+                              
+                                }else{ // first click
+                                  this.style.backgroundColor = "green";
+                                }
+                                
+                              };
+                              /*
+                              this.onmouseleave = function(){
+                                window.alert(this.id + "    mouse leave id");
+                            
+                                
+                              if(this.id = "green"){ // hovering is green
+                                this.style.backgroundColor = "green";
+                                this.setAttribute("id", "red");
+
+                                window.alert(this.id);    
+                              }
+                              
+                              else if(this.id = "red"){
+                                this.style.backgroundColor = "red";
+                                this.id = "white";
+                            
+                              }
+                              else if(this.id = "white"){
+                                this.style.backgroundColor = "white";
+                                this.id = "green";
+                            
+                              }
+                              
+                            };
+                            */
+                              }));
+                            /*
+                            document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("mouseover", function() {
+                              this.style.background = "green";
+                            }));
+
+                            cells = document.querySelectorAll(".letterboard td")
+
+                            for (var i = 0, element; element = cells[i]; i++) {
+                              element.id = "green";
+                            
+                            }
+                           
+                            
+                            document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("mouseleave", function() {
+                              this.style.background = "white";
+                            }));
+                            
+                            */
+                            </script>
                     </table>
                   </div>
             
@@ -338,7 +442,7 @@
                               size=2;
                               class="form-control"></td>
                             <td><input type="text"
-                              name="letter_1"
+                              name="letter_2"
                               id="letter_2"
                               required
                               pattern="[A-Za-z]"
@@ -347,7 +451,7 @@
                               class="form-control"></td>
                                <td><input
                                 type="text"
-                                name="letter_1"
+                                name="letter_3"
                                 id="letter_3"
                                 required
                                 pattern="[A-Za-z]"
@@ -356,7 +460,7 @@
                                 class="form-control"></td>
                               <td><input
                                 type="text"
-                                name="letter_1"
+                                name="letter_4"
                                 id="letter_4"
                                 required
                                 pattern="[A-Za-z]"
@@ -365,7 +469,7 @@
                                 class="form-control"></td>
                               <td><input
                                 type="text"
-                                name="letter_1"
+                                name="letter_5"
                                 id="letter_5"
                                 required
                                 pattern="[A-Za-z]"

@@ -10,7 +10,7 @@ letter_1.addEventListener("invalid", f2);
 
 
 letter_2.addEventListener("input", f1);
-letter_3.addEventListener("invalid", f2);
+letter_2.addEventListener("invalid", f2);
 
 
 letter_3.addEventListener("input", f1);
@@ -24,17 +24,27 @@ letter_4.addEventListener("invalid", f2);
 letter_5.addEventListener("input", f1);
 letter_5.addEventListener("invalid", f2);
 
-
+// TODO: Repeating letters to check
 
 function f1(){
+  // Reset msg
   this.setCustomValidity("");
+  /*
+  if(this.value===letter_1.value){
+    this.setCustomValidity("Repeating!!!");
+  }
+  */
   this.checkValidity();
+  
 }
 
 function f2(){
   if (this.value === "") {
-    this.setCustomValidity("Enter your guess.");
-  } else {
+    this.setCustomValidity("Enter your guess." );
+
+  } 
+  else {
     this.setCustomValidity("Your guess can only contain letters.");
   }
 }
+
