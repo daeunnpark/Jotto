@@ -1,4 +1,7 @@
 package com.white.repositories;
 
-public interface GameHistoryRepository {
+import com.white.domain.User;
+import org.springframework.data.repository.CrudRepository;
+
+public interface GameHistoryRepository extends CrudRepository<User, String> {
 }

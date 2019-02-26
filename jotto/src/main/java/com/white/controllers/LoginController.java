@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginController {
+
     @RequestMapping("/login")
     String index(){
         return "login";
@@ -17,6 +18,8 @@ public class LoginController {
         model.addAttribute("loginError", true);
         return "login";
     }
+
+
 
 
 }

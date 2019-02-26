@@ -2,7 +2,7 @@ package com.white.GamePlay;
 
 public class GamePlay {
 
-    final String invalidWord = "Invalid Entry: alphabets only without repeating letters";
+    final String ivalnidWord = "Invalid Entry: alphabets only without repeating letters";
     String usersWord;
     String computersWord;
     final char[] alphabets = "abcdefghijklmnopqrstuvwxyz".toCharArray();
@@ -94,7 +94,10 @@ JOTTO
     - computer also makes a guess
     - shows
 
-3. The user toggles a letter
+2-2. When the user wins,
+    - save the game result in DB
+
+3. The user toggles a letter (DONE BY FRONT END)
     - toggle all the words in my guesses
 
 
