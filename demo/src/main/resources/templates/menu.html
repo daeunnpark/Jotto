@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <link href="../static/css/menu.css"
@@ -8,11 +7,37 @@
 </head>
 
 <div class="flex">
-    <a href="#0" class="bttn">Start a New Game</a>
+
+
+<form action="/game" method="GET">
+    <div class="flex dark">
+        <input type="submit" class="bttn-dark" value = "Start a New Game"/>
+    </div>
+</form>
 </div>
+
+<div class="flex">
+<form action="/history" method="GET">
+    <div class="flex dark">
+        <input type="submit" class="bttn-dark" value = "View History"/>
+    </div>
+</form>
+</div>
+
+<div class="flex">
+<form action="/redirect" method="GET">
+    <div class="flex dark">
+        <input type="submit" class="bttn-dark" value = "Sign Out"/>
+    </div>
+</form>
+</div>
+
+<!--
 <div class="flex dark">
-    <a href="#0" class="bttn-dark">View History</a>
+<a href="#0" class="bttn-dark">Sign Out</a>
 </div>
+-->
+
 </body>   
 
 </html>

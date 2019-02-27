@@ -16,12 +16,12 @@ body {
   padding: 0px;
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
-  background: #F5F0FF;
+  background: white;/*#F5F0FF;*/
   -webkit-font-smoothing: antialiased;
 }
 
 .dark {
-  background: #eeddff;
+  background: white;/*#eeddff;*/
 }
 
 .flex {
