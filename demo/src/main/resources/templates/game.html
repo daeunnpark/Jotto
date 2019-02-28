@@ -5,7 +5,7 @@
     <link href="../static/css/game.css"
           th:href="@{css/game.css}" rel="stylesheet" media="screen"/>
     <meta charset="UTF-8" />
-    <title>Pricing Table</title>
+    <title>Jotto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
@@ -18,45 +18,63 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="game.css" />
-  </head>
 
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom fonts for this template -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+  type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+<!-- Custom styles for this template -->
+<link href="css/index.css" rel="stylesheet">
+<!-- <link href="css/modal-1.css" rel="stylesheet">-->
+<link href="css/game.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+
+</head>
   <body>
-  
-   
-  
+
     <section>
 
+      <div class="container-fluid">
 
+     <button onclick="goBack()">Go Back to Menu</button>
 
-      <div class="container-fluid"> 
-        <button onclick="goBack()">Go Back to Menu</button>
-        
         <script>
           function goBack() {
+            //window.alert("hello");
             window.history.back();
           }
         </script>
-        <div class="container">  
-        <div class="row">        
-            
-          
-          <!--
-          <script>
-            window.prompt("sometext", "defaultText");
-            var person = prompt("Please enter your name", "Harry Potter");
-            
-            if (person == null || person == "") {
-            txt = "User cancelled the prompt.";
-            } else {
-            txt = "Hello " + person + "! How are you today?";
-            }
-            </script>
-          -->
+
+        <script>
+
+          var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
+
+          while (word == null || word == "") { // + validity of word
+            txt = "Your secret word is not valid. Try again.";
+            window.prompt(txt, "5 letter word without repeating letters");
+
+          }
+
+          window.alert("Let's play!");
+
+        </script>
+
+        <div class="container">
+        <div class="row">
+
+
             <!-- START COMPUTER -->
-           
+
             <div class="col-md-6">
-       
+
               <div class="card text-center">
                 <div class="title">
                   <i class="fa fa-robot" aria-hidden="true"></i>
@@ -301,6 +319,20 @@
                       </tr>
                     </tbody>
                   </table>
+
+                  <!--
+<div>
+  <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+    <div class="portfolio-hover">
+      <div class="portfolio-hover-content">
+        <!--<i class="fas fa-plus fa-3x"></i>
+      </div>
+    </div>
+    <input type="submit" value="Enter" />
+  </a>
+</div>
+-->
+
                 </div>
 
                 <div>
@@ -353,14 +385,14 @@
                             //window.alert(this.textContent.trim());
                           } else if (this.style.backgroundColor == "red") {
                             this.style.backgroundColor = "white";
-                    
+
                           } else if (this.style.backgroundColor == "white") {
                             this.style.backgroundColor = "green";
-                            
+
                           } else {
                             // first click
                             this.style.backgroundColor = "green";
-                            
+
                           }
                           color_code(
                             this.textContent.trim(),
@@ -489,7 +521,7 @@
             </div>
             <!-- END USER -->
 
-            
+
 
 
           </div>
@@ -497,6 +529,65 @@
       </div>
     </section>
 
+    <!-- Modal 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2 class="text-uppercase">Project Name</h2>
+                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                  <img class="img-fluid d-block mx-auto" th:src="@{img/portfolio/01-full.jpg}" alt="">
+                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                    blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia
+                    expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                  <ul class="list-inline">
+                    <li>Date: January 2017</li>
+                    <li>Client: Threads</li>
+                    <li>Category: Illustration</li>
+                  </ul>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fas fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/agency.min.js"></script>
+
+
+<!--<script>
+
+Winner Msg
+  window.alert("You won!");
+  window.alert("Computer won.");
+  go back
+
+</script> -->
 
 
   </body>
