@@ -22,5 +22,11 @@ dependencies {
 	implementation "org.webjars:bootstrap:3.3.4"
 	implementation "org.webjars:jquery:2.1.4"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile("org.springframework:spring-jdbc")
+
+	testCompile("junit:junit")
+
+	compile 'mysql:mysql-connector-java'
+
 	testImplementation 'org.springframework.security:spring-security-test'
 }

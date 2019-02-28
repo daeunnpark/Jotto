@@ -6,15 +6,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+
+
 @Entity // This tells Hibernate to make a table out of this class
 public class GameLog {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private int logID;
+
     private String username;
 
     private int game_ID;
 
-    private Date date;
+    private String date;
 
     private String word;
 
@@ -24,7 +29,7 @@ public class GameLog {
         return this.username;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return this.date;
     }
 
@@ -48,7 +53,7 @@ public class GameLog {
         this.game_ID = gid;
     }
 
-    public void setDate(Date date){
+    public void setDate(String date){
         this.date = date;
     }
 
