@@ -16,6 +16,8 @@ public class WebRedirectController {
         return "sample";
     }
 
+    @RequestMapping(value = "/signout", method = RequestMethod.GET)
+    public String signout() { return "login"; }
 
 
 
