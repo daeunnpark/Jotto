@@ -22,12 +22,41 @@
   </head>
 
   <body>
+  
+   
+  
     <section>
-      <div class="container-fluid">
-        <div class="container">
-          <div class="row">
+
+
+
+      <div class="container-fluid"> 
+        <button onclick="goBack()">Go Back to Menu</button>
+        
+        <script>
+          function goBack() {
+            window.history.back();
+          }
+        </script>
+        <div class="container">  
+        <div class="row">        
+            
+          
+          <!--
+          <script>
+            window.prompt("sometext", "defaultText");
+            var person = prompt("Please enter your name", "Harry Potter");
+            
+            if (person == null || person == "") {
+            txt = "User cancelled the prompt.";
+            } else {
+            txt = "Hello " + person + "! How are you today?";
+            }
+            </script>
+          -->
             <!-- START COMPUTER -->
+           
             <div class="col-md-6">
+       
               <div class="card text-center">
                 <div class="title">
                   <i class="fa fa-robot" aria-hidden="true"></i>
@@ -459,9 +488,16 @@
               </div>
             </div>
             <!-- END USER -->
+
+            
+
+
           </div>
         </div>
       </div>
     </section>
+
+
+
   </body>
 </html>

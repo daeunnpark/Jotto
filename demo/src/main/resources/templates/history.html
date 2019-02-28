@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+  lang="en"
+>
   <head>
-    <link href="../static/css/history.css"
-          th:href="@{css/history.css}" rel="stylesheet" media="screen"/>
+    <link
+      href="../static/css/history.css"
+      th:href="@{css/history.css}"
+      rel="stylesheet"
+      media="screen"
+    />
   </head>
+
+  <button onclick="goBack()">Go Back to Menu</button>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 
   <div id="content">
     <h1>History</h1>
