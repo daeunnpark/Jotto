@@ -84,6 +84,31 @@
           }
         </script>
 
+
+                  <script>
+                    var valid = false;
+                    while (!valid){
+                      var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
+                      if (word == null) {
+                        // Simulate an HTTP redirect:
+                        window.location.replace("/menu");
+                      }
+                      else if(word.length !== 5){
+                        alert("Word must have length of 5 characters")
+                        valid = false;
+                      }
+                      else if(new Set(word).size !== word.length){
+                        valid = false;
+                        alert("Word cannot contain repeating letters");
+                      }
+                      else{
+                        valid = true;
+                      }
+                    }
+                    window.alert("Let's play!");
+                  </script>
+          
+
         <div class="container">
           <div class="row">
             <!-- START COMPUTER -->
@@ -413,23 +438,3 @@
     <script src="js/agency.min.js"></script>
   </body>
 </html>
-
-<!--
-            <script>
-        
-              var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
-        
-              if (word == null) {
-                // Simulate an HTTP redirect:
-                window.location.replace("/menu");
-              }
-        
-              while (word === "") { // + validity of word
-                txt = "Your secret word is not valid. Try again.";
-                window.prompt(txt, "5 letter word without repeating letters");
-              }
-        
-              window.alert("Let's play!");
-        
-            </script>
-          -->

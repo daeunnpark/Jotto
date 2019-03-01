@@ -1,7 +1,7 @@
-$(window).load(function() {
+/*$(window).load(function() {
   $("#secretWordModal").modal("show");
 });
-
+*/
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
     if (this.style.backgroundColor == "green") {
@@ -54,34 +54,37 @@ window.alert(
   }
 }
 
-function user_guess(){
-    var user_table = document.getElementById('user_table');
+function user_guess() {
+  var user_table = document.getElementById("user_table");
 
-    var div = document.createElement('div')
+  var div = document.createElement("div");
 
-    var char1 = document.getElementById('letter_1').textContent;
+  var char1 = document.getElementById("letter_1").textContent;
 
-    var char2 = document.getElementById('letter_2').textContent;
+  var char2 = document.getElementById("letter_2").textContent;
 
-    var char3 = document.getElementById('letter_3').textContent;
+  var char3 = document.getElementById("letter_3").textContent;
 
-    var char4 = document.getElementById('letter_4').textContent;
+  var char4 = document.getElementById("letter_4").textContent;
 
-    var char5 = document.getElementById('letter_5').textContent;
+  var char5 = document.getElementById("letter_5").textContent;
 
-    var myguess = char1 + char2 + char3 + char4 + char5;
+  var myguess = char1 + char2 + char3 + char4 + char5;
 
+  //need to keep incrementing this var
+  var guessnumber = 1;
 
-    //need to keep incrementing this var
-    var guessnumber = 1;
+  //update based on user's secret word
+  var letters_correct = 2;
 
-
-    //update based on user's secret word
-    var letters_correct = 2;
-
-
-    div.innerHTML = "<tr><td>" + guessnumber + "</td><td>" +  myguess + "</td><td>" + letters_correct + "</td></tr>"
-
+  div.innerHTML =
+    "<tr><td>" +
+    guessnumber +
+    "</td><td>" +
+    myguess +
+    "</td><td>" +
+    letters_correct +
+    "</td></tr>";
 }
 /*
 document.querySelectorAll(".letterboard td").forEach(e =>
