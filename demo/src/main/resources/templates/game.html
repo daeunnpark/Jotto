@@ -57,11 +57,18 @@
 
           var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
 
-          while (word == null || word == "") { // + validity of word
+
+          if (word == null) {
+            // Simulate an HTTP redirect:
+            window.location.replace("/menu");
+          }
+
+          while (word === "") { // + validity of word
             txt = "Your secret word is not valid. Try again.";
             window.prompt(txt, "5 letter word without repeating letters");
-
           }
+
+
 
           window.alert("Let's play!");
 
@@ -104,57 +111,8 @@
                         <th>COUNT</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>8</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>9</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
+                    <tbody id="computer_table">
+
                     </tbody>
                   </table>
                 </div>
@@ -196,127 +154,8 @@
                         <th>COUNT</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>FGHIJ</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>KLMNO</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>8</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>9</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>ABCDE</td>
-                        <td>2</td>
-                      </tr>
+                    <tbody id="user_table">
+
                     </tbody>
                   </table>
 
