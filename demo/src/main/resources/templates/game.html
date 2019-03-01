@@ -55,19 +55,24 @@
 
         <script>
 
-          var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
+          var valid = false;
 
+          while (!valid){
 
-          if (word == null) {
-            // Simulate an HTTP redirect:
-            window.location.replace("/menu");
+            var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
+
+            if (word == null) {
+              // Simulate an HTTP redirect:
+              window.location.replace("/menu");
+            }
+
+            else if(word.length !== 5){
+              valid = false;
+            }
+
+            else if(new Set(word))
+
           }
-
-          while (word === "") { // + validity of word
-            txt = "Your secret word is not valid. Try again.";
-            window.prompt(txt, "5 letter word without repeating letters");
-          }
-
 
 
           window.alert("Let's play!");

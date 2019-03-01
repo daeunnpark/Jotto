@@ -1,5 +1,6 @@
 package com.white.demo.controllers;
 
+import javafx.scene.control.Alert;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
