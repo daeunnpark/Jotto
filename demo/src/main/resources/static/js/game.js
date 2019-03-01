@@ -11,3 +11,12 @@ document.querySelectorAll(".letterboard td").forEach(e =>
     this.style.background = "white";
   })
 );
+
+
+window.onload = function (){
+
+
+
+
+
+};
