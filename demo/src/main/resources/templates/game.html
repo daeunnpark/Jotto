@@ -31,6 +31,7 @@
   type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+
 <!-- Custom styles for this template -->
 <link href="css/index.css" rel="stylesheet">
 <!-- <link href="css/modal-1.css" rel="stylesheet">-->
@@ -67,10 +68,18 @@
             }
 
             else if(word.length !== 5){
+              alert("Word must have length of 5 characters")
               valid = false;
             }
 
-            else if(new Set(word))
+            else if(new Set(word).size !== word.length){
+              valid = false;
+              alert("Word cannot contain repeating letters");
+            }
+
+            else{
+              valid = true;
+            }
 
           }
 
@@ -223,14 +232,14 @@
                     <script>
                       document.querySelectorAll(".letterboard td").forEach(e =>
                         e.addEventListener("click", function() {
-                          if (this.style.backgroundColor == "green") {
+                          if (this.style.backgroundColor === "green") {
                             this.style.backgroundColor = "red";
 
                             //window.alert(this.textContent.trim());
-                          } else if (this.style.backgroundColor == "red") {
+                          } else if (this.style.backgroundColor === "red") {
                             this.style.backgroundColor = "white";
 
-                          } else if (this.style.backgroundColor == "white") {
+                          } else if (this.style.backgroundColor === "white") {
                             this.style.backgroundColor = "green";
 
                           } else {
@@ -358,7 +367,7 @@
                     </table>
                     <input type="submit" value="Enter" />
                   </form>
-                  <script type="text/javascript"
+                  <script type="text/javascript" href="js/game.js"
                           th:src="@{/js/game.js}"></script>
                 </div>
               </div>
