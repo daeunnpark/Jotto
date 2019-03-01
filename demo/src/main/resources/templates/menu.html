@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  lang="en"
+>
+  <head>
+    <link
+      href="../static/css/menu.css"
+      th:href="@{css/menu.css}"
+      rel="stylesheet"
+      media="screen"
+    />
+  </head>
 
-<head>
-    <link href="../static/css/menu.css"
-          th:href="@{css/menu.css}" rel="stylesheet" media="screen"/>
-</head>
+  <body>
+    <div class="container">
+      <form action="/game" method="GET">
+        <div class="flex dark">
+          <button type="submit" class="bttn-dark">Start a New Game</button>
+        </div>
+      </form>
 
-<div class="flex">
-<form action="/game" method="GET">
-    <div class="flex dark">
-        <input type="submit" class="bttn-dark" value = "Start a New Game"/>
+      <form action="/history" method="GET">
+        <div class="flex dark">
+          <button type="submit" class="bttn-dark">View History</button>
+        </div>
+      </form>
+
+      <form action="/logout" method="GET">
+        <div class="flex dark">
+          <button type="submit" class="bttn-dark" onclick="onLogout()">
+            Sign Out
+          </button>
+          <script>
+            function onLogout() {
+              alert("You have logged out");
+            }
+          </script>
+        </div>
+      </form>
     </div>
-</form>
-</div>
-
-<div class="flex">
-<form action="/history" method="GET">
-    <div class="flex dark">
-        <input type="submit" class="bttn-dark" value = "View History"/>
-    </div>
-</form>
-</div>
-
-<div class="flex">
-<form action="/logout" method="GET">
-    <div class="flex dark">
-        <input onclick="onLogout()" type="submit" class="bttn-dark" value = "Sign Out"/>
-
-        <script>function onLogout(){alert("You have logged out");}</script>
-    </div>
-</form>
-</div>
-
-<!--
-<div class="flex dark">
-<a href="#0" class="bttn-dark">Sign Out</a>
-</div>
--->
-
-</body>   
-
+  </body>
 </html>
