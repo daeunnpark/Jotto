@@ -313,7 +313,8 @@
               🐘 Jotto 🐘
             </h2>
           </div>
-          <form name="" method="get" action="">
+          <form id="inputform" name="" method="get" action="">
+            <!-- add input checking from backend -->
             <div class="modal-body text-center">
               <label for="label" class="col-form-label"
                 >Enter your secret word.</label
@@ -332,21 +333,24 @@
             <div class="modal-footer">
               <div class="text-center">
                 <button
-                  type="submit"
-                  formaction="/menu"
-                  th:formaction="@{/menu}"
+                  type="reset"
+                  onclick="window.location='/menu';return false;"
                   class="btn btn-default"
                 >
                   Close
                 </button>
 
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-dismiss="modal"
-                >
+                <button type="submit" class="btn btn-primary" id="submitbtn">
                   OK
                 </button>
+                <script>
+                  $("#inputform").submit(function(e) {
+                    e.preventDefault();
+                    // Coding
+                    $("#secretWordModal").modal("hide");
+                    return false;
+                  });
+                </script>
 
                 <!--<button class="btn btn-primary">OK</button>
                       <button type="submit" class="btn btn-primary">OK</button>-->

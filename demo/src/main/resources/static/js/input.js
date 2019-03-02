@@ -44,7 +44,7 @@ function f3() {
   this.checkValidity();
 
   if (new Set(this.value).size !== this.value.length) {
-    this.setCustomValidity("Word cannot contain repeating letters");
+    this.setCustomValidity("Word cannot contain repeating letters.");
   } else {
     this.setCustomValidity("");
   }
@@ -54,9 +54,9 @@ function f4() {
   if (this.value === "") {
     this.setCustomValidity("Enter your secret word.");
   } else if (this.value.length !== 5) {
-    this.setCustomValidity("Word must have length of 5 characters");
+    this.setCustomValidity("Word must have length of 5 character.");
   } else if (new Set(this.value).size !== this.value.length) {
-    this.setCustomValidity("Word cannot contain repeating letters");
+    this.setCustomValidity("Word cannot contain repeating letters.");
   } else {
     this.setCustomValidity("Your guess can only contain letters.");
   }
