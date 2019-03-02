@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class WebRedirectController {
+
     // Not used but to test
     @RequestMapping(value = "/redirect", method = RequestMethod.GET)
     public String redirect() {
         return "redirect:/sample";
     }
+
     @RequestMapping(value = "/sample", method = RequestMethod.GET)
     public String history() {
         return "sample";
@@ -18,6 +20,9 @@ public class WebRedirectController {
 
     @RequestMapping(value = "/signout", method = RequestMethod.GET)
     public String signout() { return "login"; }
+
+    @RequestMapping(value = "/login/signfail")
+    public String signfail() {return "login";}
 
 
 

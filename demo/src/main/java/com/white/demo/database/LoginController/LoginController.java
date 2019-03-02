@@ -5,15 +5,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.white.demo.database.model.GameLog;
 import com.white.demo.database.model.Game;
+import com.white.demo.controllers.WebRedirectController;
 import com.white.demo.database.model.Login;
 import com.white.demo.database.Repositories.GameLogRepository;
 import com.white.demo.database.Repositories.GameRepository;
 import com.white.demo.database.Repositories.LoginRepository;
+import java.util.List;
+
+import java.util.Iterator;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Controller    // This means that this class is a Controller
@@ -27,24 +33,51 @@ public class LoginController {
     //@Autowired
     //private GameLogRepository logRepository;
     public static int logincount = 0;
+
     //Date d = new Date();
 
 
+    WebRedirectController wc = new WebRedirectController();
 
-
-    @GetMapping(path="/addLogin") // Map ONLY GET Requests
-    public @ResponseBody String addNewLogin (@RequestParam String email
-            , @RequestParam String username, @RequestParam String password) {
+    @RequestMapping(value="/addLogin") // Map ONLY GET Requests
+    public String addNewLogin (HttpServletRequest req, @RequestParam(value = "email") String email
+            ,@RequestParam(value = "password") String password) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
+        for (Login login : loginRepository.findAll()){
+            if (login.getEmail().equals(email)){
+                return "redirect:/login?signfail";
+            }
+        }
 
         Login l = new Login();
-        l.setUsername(username);
+        //l.setUsername(username);
         l.setEmail(email);
         l.setPassword(password);
         this.loginRepository.save(l);
-        return "LogCount : " + logincount++;
+
+        return "redirect:/menu";
+
+    }
+
+    @RequestMapping(value="/checkLogin") // Map ONLY GET Requests
+    public String checkLogin (HttpServletRequest req, @RequestParam(value = "email") String email
+            ,@RequestParam(value = "password") String password) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+
+        for (Login login : loginRepository.findAll()){
+            if (login.getEmail().equals(email)){
+                if (login.getPassword().equals(password)){
+                    return "redirect:/menu";
+                }
+
+            }
+        }
+
+
+        return "redirect:/login?error";
 
     }
     /*
