@@ -21,6 +21,8 @@ public class GameLog {
 
     private String date;
 
+
+
     private String word;
 
     private int letterCount;

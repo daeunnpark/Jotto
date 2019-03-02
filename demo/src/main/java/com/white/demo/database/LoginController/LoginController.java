@@ -32,6 +32,7 @@ public class LoginController {
     //private LoginRepository loginRepository;
     //@Autowired
     //private GameLogRepository logRepository;
+    public static String name = "";
     public static int logincount = 0;
 
     //Date d = new Date();
@@ -61,6 +62,10 @@ public class LoginController {
 
     }
 
+    public String getName(){
+        return name;
+    }
+
     @RequestMapping(value="/checkLogin") // Map ONLY GET Requests
     public String checkLogin (HttpServletRequest req, @RequestParam(value = "email") String email
             ,@RequestParam(value = "password") String password) {
@@ -70,6 +75,8 @@ public class LoginController {
         for (Login login : loginRepository.findAll()){
             if (login.getEmail().equals(email)){
                 if (login.getPassword().equals(password)){
+
+                    name = email;
                     return "redirect:/menu";
                 }
 

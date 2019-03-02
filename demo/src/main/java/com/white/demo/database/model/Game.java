@@ -10,15 +10,37 @@ import javax.persistence.Id;
 public class Game {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+
     private int game_ID;
 
     private String player1;
 
     private String player2;
 
+    private String date;
+
     public int getGame_ID(){
         return this.game_ID;
     }
+
+    public int getID(){
+        return this.id;
+    }
+
+    public void setID(int id){
+        this.id = id;
+    }
+
+    public String getDate(){
+        return this.date;
+    }
+
+    public void setDate(String date){
+        this.date = date;
+    }
+
+
 
     public String getPlayer1(){
         return player1;

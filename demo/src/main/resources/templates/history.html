@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-  lang="en"
->
-  <head>
-    <link
-      href="../static/css/history.css"
-      th:href="@{css/history.css}"
-      rel="stylesheet"
-      media="screen"
-    />
-  </head>
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+        lang="en">
 
-  <button onclick="goBack()">Go Back to Menu</button>
+<head>
+  <link
+          href="../static/css/history.css"
+          th:href="@{css/history.css}"
+          rel="stylesheet"
+          media="screen"
+  />
+</head>
 
-  <script>
-    function goBack() {
-      window.history.back();
-    }
-  </script>
+<button onclick="goBack()">Go Back to Menu</button>
 
-  <div id="content">
-    <h1>History</h1>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
 
-    <ul class="timeline">
-      <li class="event" data-date="2019-02-20">
-        <h3>ONE</h3>
-      </li>
-      <li class="event" data-date="2019-02-10">
-        <h3>TWO</h3>
-      </li>
-      <li class="event" data-date="2019-02-01">
-        <h3>THREE</h3>
-      </li>
-      <li class="event" data-date="2019-01-10">
-        <h3>FOUR</h3>
-      </li>
-      <li class="event" data-date="2019-01-01">
-        <h3>FIVE</h3>
-      </li>
-    </ul>
-  </div>
+<div id="content">
+  <h1>History</h1>
+  <body>
+
+    <table>
+      <tr>
+        <th>vs_USER</th>
+        <th>DATE</th>
+      </tr>
+      <tr th:each="game,iterStat : ${games}" th:class="${iterStat.odd}? 'odd'">
+        <td th:text="${game.player1}"></td>
+        <td th:text="${game.date}"></td>
+
+      </tr>
+    </table>
+  </body>
+
+
+</div>
 </html>
