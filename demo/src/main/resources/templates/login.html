@@ -22,8 +22,13 @@
             <div class="form-holder">
               <!--If not working, try with <name="username" name="password"> in input type like line 47/53-->
 
-              <input type="email" class="input" placeholder="Email" />
-              <input type="password" class="input" placeholder="Password" />
+              <input type="email" class="input" placeholder="Email" required />
+              <input
+                type="password"
+                class="input"
+                placeholder="Password"
+                required
+              />
             </div>
             <button class="submit-btn">Sign up</button>
           </div>
@@ -38,12 +43,14 @@
                   class="input"
                   placeholder="Email"
                   name="username"
+                  required
                 />
                 <input
                   type="password"
                   class="input"
                   placeholder="Password"
                   name="password"
+                  required
                 />
               </div>
               <button class="submit-btn">Log in</button>
