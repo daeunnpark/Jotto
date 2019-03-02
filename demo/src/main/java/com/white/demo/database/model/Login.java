@@ -13,16 +13,14 @@ public class Login {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int loginID;
 
-    private String username;
+    //private String username;
 
     private String email;
 
     private String password;
 
-    public String getUser_name(){
-        return username;
-    }
-
+    //public String getUser_name(){return username;}
+    public int getLoginID(){ return loginID;}
     public String getEmail(){
         return email;
     }
@@ -31,9 +29,9 @@ public class Login {
         return password;
     }
 
-    public void setUsername(String username){
-        this.username = username;
-    }
+   // public void setUsername(String username){ this.username = username; }
+
+    public void setLoginID(int loginID){this.loginID = loginID;}
 
     public void setEmail(String email){
         this.email = email;

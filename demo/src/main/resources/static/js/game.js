@@ -24,19 +24,19 @@ function color_code(letter, color) {
     // skip header
     str = table.rows[r].cells[1].innerHTML;
     /*
-window.alert(
-"this is = " +
-  table.rows[r].cells[1].innerHTML +
-  "letter is " +
-  letter
-);
-*/
+    window.alert(
+    "this is = " +
+      table.rows[r].cells[1].innerHTML +
+      "letter is " +
+      letter
+    );
+    */
     if (str.includes(letter)) {
       /*
-                        window.alert(
-                          str + "contains " + letter + " " + str.charAt(0)
-                        );
-*/
+                              window.alert(
+                                str + "contains " + letter + " " + str.charAt(0)
+                              );
+      */
       for (var i = 0; i < str.length; i++) {
         if (str.charAt(i) === letter) {
           table.rows[r].cells[1].innerHTML =
