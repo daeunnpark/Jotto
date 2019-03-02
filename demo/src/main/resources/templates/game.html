@@ -84,31 +84,6 @@
           }
         </script>
 
-
-                  <script>
-                    var valid = false;
-                    while (!valid){
-                      var word = prompt("Enter your secret word.", "5 letter word without repeating letters"); // change msg
-                      if (word == null) {
-                        // Simulate an HTTP redirect:
-                        window.location.replace("/menu");
-                      }
-                      else if(word.length !== 5){
-                        alert("Word must have length of 5 characters")
-                        valid = false;
-                      }
-                      else if(new Set(word).size !== word.length){
-                        valid = false;
-                        alert("Word cannot contain repeating letters");
-                      }
-                      else{
-                        valid = true;
-                      }
-                    }
-                    window.alert("Let's play!");
-                  </script>
-          
-
         <div class="container">
           <div class="row">
             <!-- START COMPUTER -->
@@ -184,10 +159,7 @@
                         <th>COUNT</th>
                       </tr>
                     </thead>
-                    <tbody id="user_table">
-
-
-                    </tbody>
+                    <tbody id="user_table"></tbody>
                   </table>
                 </div>
 
@@ -315,11 +287,6 @@
                     src="../static/js/game.js"
                     th:src="@{/js/game.js}"
                   ></script>
-
-                  <script
-                    src="../static/js/input.js"
-                    th:src="@{/js/input.js}"
-                  ></script>
                 </div>
               </div>
             </div>
@@ -346,7 +313,7 @@
               🐘 Jotto 🐘
             </h2>
           </div>
-          <form name="" method="get" action="/is_valid()">
+          <form name="" method="get" action="">
             <div class="modal-body text-center">
               <label for="label" class="col-form-label"
                 >Enter your secret word.</label
@@ -357,8 +324,11 @@
                 class="form-control"
                 placeholder="5 letter word without repeating letters"
                 maxlength="5"
+                required
+                pattern="[A-Za-z]{5}"
               />
             </div>
+
             <div class="modal-footer">
               <div class="text-center">
                 <button
@@ -377,6 +347,7 @@
                 >
                   OK
                 </button>
+
                 <!--<button class="btn btn-primary">OK</button>
                       <button type="submit" class="btn btn-primary">OK</button>-->
               </div>
@@ -436,5 +407,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
+    <script src="../static/js/input.js" th:src="@{/js/input.js}"></script>
   </body>
 </html>

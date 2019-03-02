@@ -1,7 +1,7 @@
-/*$(window).load(function() {
+$(window).load(function() {
   $("#secretWordModal").modal("show");
 });
-*/
+
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
     if (this.style.backgroundColor == "green") {
