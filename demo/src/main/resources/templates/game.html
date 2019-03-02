@@ -380,6 +380,22 @@
             <!--<button class="btn btn-primary">OK</button>
                   <button type="submit" class="btn btn-primary">OK</button>-->
           </div>
+          <form name="" method="get" action="/menu" th:action="@{/menu}">
+            <div class="modal-body">
+              <p>
+                &lt;Winner&gt; won!
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-default">
+                Close
+              </button>
+              <!-- formaction="/saveData" th:formaction="@{/saveData}" for example-->
+              <button type="submit" class="btn btn-primary">
+                OK
+              </button>
+            </div>
+          </form>
         </div>
       </form>
     </div>
