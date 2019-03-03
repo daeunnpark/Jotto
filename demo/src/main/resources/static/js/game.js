@@ -13,6 +13,51 @@ var winner = "";
 var numUserGuess = 0;
 // Global variables end
 
+/* attach a submit handler to the form */
+$("#inputform2").submit(function (event) {
+
+  var url = "/guess"; // the script where you handle the form input.
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $("#inputform2").serialize(), // serializes the form's elements.
+    success: function (data) {
+      alert(data); // show response from the php script.
+    }
+  });
+  /*document.getElementById(letter_1).innerHTML = "";*/
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+document.getElementById("submitbtn2").addEventListener("click",function () {
+  table = document.getElementById("userGuessTable");
+  var row = table.insertRow(table.rows.length);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+
+  var char1 = document.getElementById("letter_1").value;
+
+  var char2 = document.getElementById("letter_2").value;
+
+  var char3 = document.getElementById("letter_3").value;
+
+  var char4 = document.getElementById("letter_4").value;
+
+  var char5 = document.getElementById("letter_5").value;
+
+  var myguess = char1 + char2 + char3 + char4 + char5;
+
+
+
+  cell1.innerHTML = "1";  //numUserGuess;
+  cell2.innerHTML = myguess;  //userGuess;
+  cell3.innerHTML = "2";  //count;
+  //user_guess();
+});
+
 $(window).load(function() {
   $("#secretWordModal").modal("show");
 });
