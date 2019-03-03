@@ -146,14 +146,14 @@ function user_guess(table){
   var char5 = document.getElementById("letter_5").value;
 
   if(!(char1 === "" || char2 === "" || char3 === "" || char4 === "" || char5 === "")){
-    var myguess = char1 + char2 + char3 + char4 + char5;
+    var myGuess = char1 + char2 + char3 + char4 + char5;
 
     numUserGuess++;
-    userGuessList.push(myguess);\
-    var count = count(myguess,userWord)
+    userGuessList.push(myGuess);
+    var count = count(myGuess,userWord);
     userCorrectCountList.push = count;
-    printGuess(table,numUserGuess,myguess,count);
-    checkGuess(myguess, userWord, "user");
+    printGuess(table,numUserGuess,myGuess,count);
+    checkGuess(myGuess, userWord, "user");
   }
 }
 
@@ -170,8 +170,8 @@ function computerInit(){
 function computerGuess(table, current_array){
   numComGuess++;
   var guess = random(current_array);
-  computerGuessList.push(guess);\
-    var count = count(guess,computerWord)
+  computerGuessList.push(guess);
+  var count = count(guess,computerWord);
   computerCorrectCountList.push = count;
   printGuess(table,numComGuess,guess,count);
   checkGuess(guess, computerWord, "computer");
@@ -212,13 +212,13 @@ function printGuess(table, numGuess, guess, count){
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
 
-  cell1.innerHTML = numGuess
-  cell2.innerHTML = guess
+  cell1.innerHTML = numGuess;
+  cell2.innerHTML = guess;
   cell3.innerHTML = count;
 }
 
 function checkGuess(guess, word, player){
-  if(guess == word){
+  if(guess === word){
     winner = player;
     saveHistory();
     popUpWinner();
