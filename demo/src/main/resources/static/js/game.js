@@ -1,3 +1,18 @@
+// Global variables start
+//for history
+var currentUserName = "";
+var time;
+var userWord = "";
+var computerWord = "";
+var userGuessList = [];
+var userCorrectCountList = [];
+var computerGuessList = [];
+var computerCorrectCountList = [];
+var winner = "";
+
+var numUserGuess = 0;
+// Global variables end
+
 $(window).load(function() {
   $("#secretWordModal").modal("show");
   /*
