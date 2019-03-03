@@ -82,7 +82,7 @@ $("#inputform2").submit(function(event) {
 document.getElementById("submitbtn2").addEventListener("click", function() {
   table = document.getElementById("userGuessTable");
   user_guess(table);
-
+  computerGuess(table, currentArray);
 });
 
 document.querySelectorAll(".letterboard td").forEach(e =>
@@ -167,7 +167,7 @@ function computerInit(){
   currentArray = dictArray;
 }
 
-function computerGuess(current_array){
+function computerGuess(table, current_array){
   numComGuess++;
   var guess = random(current_array);
   computerGuessList.push(guess);\
