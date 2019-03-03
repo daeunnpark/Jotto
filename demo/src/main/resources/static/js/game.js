@@ -59,40 +59,26 @@ $(window).load(function() {
   $("#secretWordModal").modal("show");
 });
 
-/* Not working with local file */
+/* url link to word list on github*/
 /*
 $(document).ready(function() {
-  $.get("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(response) {
-    var word_list = response;
+  $.get(
+    "https://raw.githubusercontent.com/daeunnpark/team_white_hw1/757a16aba0be8f51bd16ed1d1e64a56627feab2e/demo/src/main/resources/static/text/legal_words.txt?token=AdVp8nLMuRYuyhFs1GOCO4Ovgp1w5I5lks5ce3b9wA%3D%3D",
+    function(response) {
+      var word_list = response;
 
-    var word1 = "following";
-    var word2 = "Daeun";
+      var word1 = "abets";
+      var word2 = "acmes";
 
-    if (word_list.indexOf(word2) > -1) {
-      alert("The link contains this word : " + word2);
-    } else {
-      alert("The link does not contain this word : " + word2);
+      if (word_list.indexOf(word2) > -1) {
+        alert("The link contains this word : " + word2);
+      } else {
+        alert("The link does not contain this word : " + word2);
+      }
     }
-  });
+  );
 });
 */
-/*
-$(document).ready(function() {
-  $("#target").load("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(
-    responseTxt,
-    statusTxt,
-    xhr
-  ) {
-    if (statusTxt == "success") {
-      alert("External content loaded successfully!");
-      alert(document.getElementById("target").innerHTML.indexOf("Daeun"));
-    }
-    if (statusTxt == "error")
-      alert("Error: " + xhr.status + ": " + xhr.statusText);
-  });
-});
-*/
-
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
     if (this.style.backgroundColor == "green") {
