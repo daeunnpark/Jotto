@@ -18,6 +18,7 @@ public class WebRedirectController {
     public String redirect() {
         return "redirect:/sample";
     }
+
     @RequestMapping(value = "/sample", method = RequestMethod.GET)
     public String history() {
         return "sample";
