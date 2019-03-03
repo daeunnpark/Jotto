@@ -65,6 +65,7 @@ $(window).load(function() {
   $("#secretWordModal").modal("show");
 });
 
+
 /* Load txt file from web and store it in array Not working with local file */
 $(document).ready(function() {
   $.get("https://raw.githubusercontent.com/daeunnpark/team_white_hw1/master/demo/src/main/resources/static/text/legal_words.txt?token=AlKbyfRgtyypcosBq2xVkW8w6Xh90j5Lks5ce4QawA%3D%3D", function(response) {
@@ -72,6 +73,7 @@ $(document).ready(function() {
     dictArray = word_list.split('\n');
   });
 });
+
 
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
