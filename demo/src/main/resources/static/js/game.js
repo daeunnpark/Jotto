@@ -38,17 +38,18 @@ document.getElementById("submitbtn2").addEventListener("click",function () {
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
 
-  var char1 = document.getElementById("letter_1").textContent;
+  var char1 = document.getElementById("letter_1").value;
 
-  var char2 = document.getElementById("letter_2").textContent;
+  var char2 = document.getElementById("letter_2").value;
 
-  var char3 = document.getElementById("letter_3").textContent;
+  var char3 = document.getElementById("letter_3").value;
 
-  var char4 = document.getElementById("letter_4").textContent;
+  var char4 = document.getElementById("letter_4").value;
 
-  var char5 = document.getElementById("letter_5").textContent;
+  var char5 = document.getElementById("letter_5").value;
 
   var myguess = char1 + char2 + char3 + char4 + char5;
+
 
 
   cell1.innerHTML = "1";  //numUserGuess;
