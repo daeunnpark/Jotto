@@ -159,3 +159,84 @@ function user_guess() {
     letters_correct +
     "</td></tr>";
 }
+
+
+/* Computer function start */
+/*
+function computerInit(){
+  computerWord = random(fullArray);
+}
+
+function computerPlay(){
+  computerGuess(currentArray);
+
+}
+
+function computerGuess(array){
+  numComGuess++;
+  var guess = random(currentArray);
+  computerGuessList.push(guess);\
+    var count = count(guess,computerWord)
+  computerCorrectCountList.push = count;
+  printGuess(table,numComGuess,guess,count);
+  checkGuess(guess, computerWord, "computer");
+  currentArray = refine_array(computerWord, count, currentArray);
+}
+
+function random(arr){
+  return arr[Math.random()*arr.length];
+}
+
+function count(word1, word2){
+  var chaArr1 = word1.split('');
+  var chaArr2 = word2.split('');
+  var i;
+  var count = 0;
+  for(i=0; i<chaArr1.length; i++){
+    if(chaArr2.includes(chaArr1[i])){
+      count++;
+    }
+  }
+  return count;
+}
+
+function refine_array(word, count, array){
+  var temp = [];
+  var i;
+  for(i=0; i<array.length; i++){
+    if(count(word,array[i]) == count){
+      temp.push(array[i]);
+    }
+  }
+  return temp;
+}
+
+function printGuess(table, numGuess, guess, count){
+  var row = table.insertRow(table.rows.length);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+
+  cell1.innerHTML = numGuess
+  cell2.innerHTML = guess
+  cell3.innerHTML = count;
+}
+
+function checkGuess(guess, word, player){
+  if(guess == word){
+    winner = player;
+    saveHistory();
+    popUpWinner();
+  }
+}
+
+function saveHistory(){
+  //send the game result to DB
+}
+
+function popUpWinner(){
+  //pop up winner window
+  //end the game
+}
+*/
+/* Computer function end */
