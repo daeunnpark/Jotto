@@ -107,14 +107,13 @@ document.getElementById("submitbtn2").addEventListener("click", function() {
     )
   ) {
     var myguess = char1 + char2 + char3 + char4 + char5;
-    if (is_valid(myguess)) {
       // printing smg from here
 
       cell1.innerHTML = "1"; //numUserGuess;
       cell2.innerHTML = myguess; //userGuess;
       cell3.innerHTML = "2"; //count;
       //user_guess();
-    }
+
   }
 });
 
@@ -170,38 +169,6 @@ window.alert(
   }
 }
 
-function user_guess() {
-  var user_table = document.getElementById("user_table");
-
-  var div = document.createElement("div");
-
-  var char1 = document.getElementById("letter_1").textContent;
-
-  var char2 = document.getElementById("letter_2").textContent;
-
-  var char3 = document.getElementById("letter_3").textContent;
-
-  var char4 = document.getElementById("letter_4").textContent;
-
-  var char5 = document.getElementById("letter_5").textContent;
-
-  var myguess = char1 + char2 + char3 + char4 + char5;
-
-  //need to keep incrementing this var
-  var guessnumber = 1;
-
-  //update based on user's secret word
-  var letters_correct = 2;
-
-  div.innerHTML =
-    "<tr><td>" +
-    guessnumber +
-    "</td><td>" +
-    myguess +
-    "</td><td>" +
-    letters_correct +
-    "</td></tr>";
-}
 
 /* Computer function start */
 /*
