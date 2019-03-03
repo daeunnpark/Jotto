@@ -70,7 +70,7 @@ $(window).load(function() {
 $(document).ready(function() {
   $.get("https://raw.githubusercontent.com/daeunnpark/team_white_hw1/master/demo/src/main/resources/static/text/legal_words.txt?token=AlKbyfRgtyypcosBq2xVkW8w6Xh90j5Lks5ce4QawA%3D%3D", function(response) {
     var word_list = response;
-    dictArray = word_list.split('\n');
+    fullArray = word_list.split('\n');
   });
 });
 
@@ -165,6 +165,7 @@ function user_guess() {
 /*
 function computerInit(){
   computerWord = random(fullArray);
+  currentArray = fullArray;
 }
 
 function computerPlay(){
