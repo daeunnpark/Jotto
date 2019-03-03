@@ -15,9 +15,15 @@
   rel="stylesheet"/>
  -->
 
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  
+  
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
   <script src="http://code.jquery.com/jquery.js"></script>
   <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
@@ -193,8 +199,31 @@
                     </tbody>
                   </table>
                 </div>
-                <button type="submit" class="bttn-dark_2">Enter</button>
+                <button type="submit" class="bttn-dark_2" id = "submitbtn2">Enter</button>
               </form>
+            <script type='text/javascript'>
+              /* attach a submit handler to the form */
+              $("#inputform2").submit(function (event) {
+
+                var url = ""; // the script where you handle the form input.
+
+                $.ajax({
+                  type: "POST",
+                  url: url,
+                  data: $("#inputform2").serialize(), // serializes the form's elements.
+                  success: function (data) {
+                    alert(data); // show response from the php script.
+                  }
+                });
+                /*document.getElementById(letter_1).innerHTML = "";*/
+
+
+
+                return false; // avoid to execute the actual submit of the form.
+              });
+            </script>
+
+
 
             </div>
           </div>
@@ -216,7 +245,7 @@
             🐘 Jotto 🐘
           </h2>
         </div>
-        <form id="inputform" name="" method="get" action="">
+        <form id="inputform" name="" method="post" action="">
           <!-- add input checking from backend -->
           <div class="modal-body text-center">
             <label for="label" class="col-form-label">Enter your secret word.</label>
@@ -233,6 +262,7 @@
               <button type="submit" class="btn btn-primary" id="submitbtn">
                 OK
               </button>
+             
               <script>
                 $("#inputform").submit(function (e) {
                   e.preventDefault();
@@ -241,6 +271,9 @@
                   return false;
                 });
               </script>
+
+             
+             
 
               <!--<button class="btn btn-primary">OK</button>
                       <button type="submit" class="btn btn-primary">OK</button>-->

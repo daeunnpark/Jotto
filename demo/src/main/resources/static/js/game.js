@@ -6,6 +6,17 @@ $(window).load(function() {
   */
 });
 
+/*
+$(document).ready(function() {
+  var isshow = localStorage.getItem("isshow");
+  if (isshow == null) {
+    localStorage.setItem("isshow", 1);
+
+    // Show popup here
+    $("#secretWordModal").show();
+  }
+});
+*/
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
     if (this.style.backgroundColor == "green") {
