@@ -14,10 +14,53 @@ var winner = "";
 var numUserGuess = 0;
 var numComGuess = 0;
 
-var fullArray = [];
+/*var fullArray = []; changed to dictArray*/
 var currentArray = [];
 var firstTimePlaying = 1;
+
+//for legal_words.txt
+var dictArray = [];
+var word_list_URL =
+  "https://raw.githubusercontent.com/daeunnpark/daeunnpark.github.io/master/legal_words.txt";
+
 // Global variables end
+
+$(window).load(function() {
+  $("#secretWordModal").modal("show");
+});
+
+/* Load txt file from web and store it in array Not working with local file */
+$(document).ready(function() {
+  $.get(word_list_URL, function(response) {
+    /*alert("Word list is loaded");*/
+    var word_list = response;
+    dictArray = word_list.split("\n");
+  });
+});
+
+function is_valid(guess) {
+  if (dictArray.includes(guess)) {
+    alert("List contains this word : " + guess);
+    // Reset input field
+    document.getElementById("letter_1").value = "";
+    document.getElementById("letter_2").value = "";
+    document.getElementById("letter_3").value = "";
+    document.getElementById("letter_4").value = "";
+    document.getElementById("letter_5").value = "";
+
+    return true;
+  } else {
+    // Reset input field
+    document.getElementById("letter_1").value = "";
+    document.getElementById("letter_2").value = "";
+    document.getElementById("letter_3").value = "";
+    document.getElementById("letter_4").value = "";
+    document.getElementById("letter_5").value = "";
+
+    alert("List doesn't contain this word : " + guess);
+  }
+  return false;
+}
 
 /* attach a submit handler to the form */
 $("#inputform2").submit(function(event) {
@@ -38,6 +81,7 @@ $("#inputform2").submit(function(event) {
 
 document.getElementById("submitbtn2").addEventListener("click", function() {
   table = document.getElementById("userGuessTable");
+
   var row = table.insertRow(table.rows.length);
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
@@ -53,30 +97,26 @@ document.getElementById("submitbtn2").addEventListener("click", function() {
 
   var char5 = document.getElementById("letter_5").value;
 
-
-  if (!(char1 === "" || char2 === "" || char3 === "" || char4 === "" || char5 === "")) {
+  if (
+    !(
+      char1 === "" ||
+      char2 === "" ||
+      char3 === "" ||
+      char4 === "" ||
+      char5 === ""
+    )
+  ) {
     var myguess = char1 + char2 + char3 + char4 + char5;
+    if (is_valid(myguess)) {
+      // printing smg from here
 
-    cell1.innerHTML = "1"; //numUserGuess;
-    cell2.innerHTML = myguess; //userGuess;
-    cell3.innerHTML = "2"; //count;
-    //user_guess();
+      cell1.innerHTML = "1"; //numUserGuess;
+      cell2.innerHTML = myguess; //userGuess;
+      cell3.innerHTML = "2"; //count;
+      //user_guess();
+    }
   }
 });
-
-$(window).load(function() {
-  $("#secretWordModal").modal("show");
-});
-
-
-/* Load txt file from web and store it in array Not working with local file */
-$(document).ready(function() {
-  $.get("https://raw.githubusercontent.com/daeunnpark/team_white_hw1/master/demo/src/main/resources/static/text/legal_words.txt?token=AlKbyfRgtyypcosBq2xVkW8w6Xh90j5Lks5ce4QawA%3D%3D", function(response) {
-    var word_list = response;
-    fullArray = word_list.split('\n');
-  });
-});
-
 
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
@@ -163,11 +203,10 @@ function user_guess() {
     "</td></tr>";
 }
 
-
 /* Computer function start */
 /*
 function computerInit(){
-  computerWord = random(fullArray);
+  computerWord = random(fullArray); change to dictArray!!!!
   currentArray = fullArray;
 }
 

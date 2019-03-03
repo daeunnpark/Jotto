@@ -284,17 +284,13 @@
               <script>
                 $("#inputform").submit(function (e) {
                   e.preventDefault();
-                  // Coding
-                  $("#secretWordModal").modal("hide");
+                  if (is_valid(document.getElementById("secret_word").value)) {
+                    $("#secretWordModal").modal("hide");
+                  }
                   return false;
                 });
+                
               </script>
-
-             
-             
-
-              <!--<button class="btn btn-primary">OK</button>
-                      <button type="submit" class="btn btn-primary">OK</button>-->
             </div>
           </div>
         </form>
