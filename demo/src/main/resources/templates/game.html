@@ -24,6 +24,8 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+  </script>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
@@ -36,6 +38,8 @@
 <body>
 
   <section>
+      <p id = "target">hello</p>
+    
     <div class="container-fluid">
       <form action="/menu" method="GET">
         <div class="flex dark">
@@ -215,12 +219,29 @@
                     alert(data); // show response from the php script.
                   }
                 });
-                /*document.getElementById(letter_1).innerHTML = "";*/
+                /*
+                document.getElementById(letter_1).innerHTML = "";
+                document.getElementById(letter_2).innerHTML = "";*/
+
+
+                $("button").click(function () {
+                  $("#div1").load("demo_test.txt", function (responseTxt, statusTxt, xhr) {
+                    if (statusTxt == "success")
+                      alert("External content loaded successfully!");
+                    if (statusTxt == "error")
+                      alert("Error: " + xhr.status + ": " + xhr.statusText);
+                  });
+                });
 
 
 
                 return false; // avoid to execute the actual submit of the form.
               });
+
+
+
+
+              
             </script>
 
 

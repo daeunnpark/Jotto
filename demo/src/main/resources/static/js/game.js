@@ -15,23 +15,41 @@ var numUserGuess = 0;
 
 $(window).load(function() {
   $("#secretWordModal").modal("show");
-  /*
-  var table = document.getElementById("wordtable1");
-  table.rows[0].cells[0].innerHTML = "T";
-  */
+});
+
+$(document).ready(function() {
+  /* Not working with local file */
+  $.get("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(response) {
+    var word_list = response;
+
+    var word1 = "following";
+    var word2 = "Daeun";
+
+    if (word_list.indexOf(word2) > -1) {
+      alert("The link contains this word : " + word2);
+    } else {
+      alert("The link does not contain this word : " + word2);
+    }
+  });
 });
 
 /*
 $(document).ready(function() {
-  var isshow = localStorage.getItem("isshow");
-  if (isshow == null) {
-    localStorage.setItem("isshow", 1);
-
-    // Show popup here
-    $("#secretWordModal").show();
-  }
+  $("#target").load("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(
+    responseTxt,
+    statusTxt,
+    xhr
+  ) {
+    if (statusTxt == "success") {
+      alert("External content loaded successfully!");
+      alert(document.getElementById("target").innerHTML.indexOf("Daeun"));
+    }
+    if (statusTxt == "error")
+      alert("Error: " + xhr.status + ": " + xhr.statusText);
+  });
 });
 */
+
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
     if (this.style.backgroundColor == "green") {
