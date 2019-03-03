@@ -14,23 +14,18 @@
   </head>
 
   <body>
+    <div class="container">
+      <form action="/game" method="GET">
+        <div class="flex dark">
+          <button type="submit" class="bttn-dark">Start a New Game</button>
+        </div>
+      </form>
 
-
-<div class="flex">
-<form action="/game" method="GET">
-    <div class="flex dark">
-        <input type="submit" class="bttn-dark" value = "Start a New Game"/>
-    </div>
-</form>
-</div>
-
-<div class="flex">
-<form action="/game/history" method="GET">
-    <div class="flex dark">
-        <input type="submit" class="bttn-dark" value = "View History"/>
-    </div>
-</form>
-</div>
+      <form action="game/history" method="GET">
+        <div class="flex dark">
+          <button type="submit" class="bttn-dark">View History</button>
+        </div>
+      </form>
 
       <form action="/logout" method="GET">
         <div class="flex dark">
