@@ -10,7 +10,13 @@ var computerGuessList = [];
 var computerCorrectCountList = [];
 var winner = "";
 
+//for gameplay
 var numUserGuess = 0;
+var numComGuess = 0;
+
+var fullArray = [];
+var currentArray = [];
+var firstTimePlaying = 1;
 // Global variables end
 
 /* attach a submit handler to the form */
@@ -59,39 +65,13 @@ $(window).load(function() {
   $("#secretWordModal").modal("show");
 });
 
-/* Not working with local file */
-/*
+/* Load txt file from web and store it in array Not working with local file */
 $(document).ready(function() {
-  $.get("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(response) {
+  $.get("https://raw.githubusercontent.com/daeunnpark/team_white_hw1/master/demo/src/main/resources/static/text/legal_words.txt?token=AlKbyfRgtyypcosBq2xVkW8w6Xh90j5Lks5ce4QawA%3D%3D", function(response) {
     var word_list = response;
-
-    var word1 = "following";
-    var word2 = "Daeun";
-
-    if (word_list.indexOf(word2) > -1) {
-      alert("The link contains this word : " + word2);
-    } else {
-      alert("The link does not contain this word : " + word2);
-    }
+    dictArray = word_list.split('\n');
   });
 });
-*/
-/*
-$(document).ready(function() {
-  $("#target").load("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(
-    responseTxt,
-    statusTxt,
-    xhr
-  ) {
-    if (statusTxt == "success") {
-      alert("External content loaded successfully!");
-      alert(document.getElementById("target").innerHTML.indexOf("Daeun"));
-    }
-    if (statusTxt == "error")
-      alert("Error: " + xhr.status + ": " + xhr.statusText);
-  });
-});
-*/
 
 document.querySelectorAll(".letterboard td").forEach(e =>
   e.addEventListener("click", function() {
