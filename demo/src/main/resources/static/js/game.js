@@ -14,15 +14,14 @@ var numUserGuess = 0;
 // Global variables end
 
 /* attach a submit handler to the form */
-$("#inputform2").submit(function (event) {
-
+$("#inputform2").submit(function(event) {
   var url = "/guess"; // the script where you handle the form input.
 
   $.ajax({
     type: "POST",
     url: url,
     data: $("#inputform2").serialize(), // serializes the form's elements.
-    success: function (data) {
+    success: function(data) {
       alert(data); // show response from the php script.
     }
   });
@@ -31,7 +30,7 @@ $("#inputform2").submit(function (event) {
   return false; // avoid to execute the actual submit of the form.
 });
 
-document.getElementById("submitbtn2").addEventListener("click",function () {
+document.getElementById("submitbtn2").addEventListener("click", function() {
   table = document.getElementById("userGuessTable");
   var row = table.insertRow(table.rows.length);
   var cell1 = row.insertCell(0);
@@ -50,11 +49,9 @@ document.getElementById("submitbtn2").addEventListener("click",function () {
 
   var myguess = char1 + char2 + char3 + char4 + char5;
 
-
-
-  cell1.innerHTML = "1";  //numUserGuess;
-  cell2.innerHTML = myguess;  //userGuess;
-  cell3.innerHTML = "2";  //count;
+  cell1.innerHTML = "1"; //numUserGuess;
+  cell2.innerHTML = myguess; //userGuess;
+  cell3.innerHTML = "2"; //count;
   //user_guess();
 });
 
@@ -62,8 +59,9 @@ $(window).load(function() {
   $("#secretWordModal").modal("show");
 });
 
+/* Not working with local file */
+/*
 $(document).ready(function() {
-  /* Not working with local file */
   $.get("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(response) {
     var word_list = response;
 
@@ -77,7 +75,7 @@ $(document).ready(function() {
     }
   });
 });
-
+*/
 /*
 $(document).ready(function() {
   $("#target").load("https://www.w3.org/TR/PNG/iso_8859-1.txt", function(
