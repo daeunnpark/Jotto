@@ -53,12 +53,15 @@ document.getElementById("submitbtn2").addEventListener("click", function() {
 
   var char5 = document.getElementById("letter_5").value;
 
-  var myguess = char1 + char2 + char3 + char4 + char5;
 
-  cell1.innerHTML = "1"; //numUserGuess;
-  cell2.innerHTML = myguess; //userGuess;
-  cell3.innerHTML = "2"; //count;
-  //user_guess();
+  if (!(char1 === "" || char2 === "" || char3 === "" || char4 === "" || char5 === "")) {
+    var myguess = char1 + char2 + char3 + char4 + char5;
+
+    cell1.innerHTML = "1"; //numUserGuess;
+    cell2.innerHTML = myguess; //userGuess;
+    cell3.innerHTML = "2"; //count;
+    //user_guess();
+  }
 });
 
 $(window).load(function() {
