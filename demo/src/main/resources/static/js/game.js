@@ -81,40 +81,8 @@ $("#inputform2").submit(function(event) {
 
 document.getElementById("submitbtn2").addEventListener("click", function() {
   table = document.getElementById("userGuessTable");
+  user_guess(table);
 
-  var row = table.insertRow(table.rows.length);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-
-  var char1 = document.getElementById("letter_1").value;
-
-  var char2 = document.getElementById("letter_2").value;
-
-  var char3 = document.getElementById("letter_3").value;
-
-  var char4 = document.getElementById("letter_4").value;
-
-  var char5 = document.getElementById("letter_5").value;
-
-  if (
-    !(
-      char1 === "" ||
-      char2 === "" ||
-      char3 === "" ||
-      char4 === "" ||
-      char5 === ""
-    )
-  ) {
-    var myguess = char1 + char2 + char3 + char4 + char5;
-      // printing smg from here
-
-      cell1.innerHTML = "1"; //numUserGuess;
-      cell2.innerHTML = myguess; //userGuess;
-      cell3.innerHTML = "2"; //count;
-      //user_guess();
-
-  }
 });
 
 document.querySelectorAll(".letterboard td").forEach(e =>
@@ -169,28 +137,45 @@ window.alert(
   }
 }
 
+/* User function start */
+function user_guess(table){
+  var char1 = document.getElementById("letter_1").value;
+  var char2 = document.getElementById("letter_2").value;
+  var char3 = document.getElementById("letter_3").value;
+  var char4 = document.getElementById("letter_4").value;
+  var char5 = document.getElementById("letter_5").value;
+
+  if(!(char1 === "" || char2 === "" || char3 === "" || char4 === "" || char5 === "")){
+    var myguess = char1 + char2 + char3 + char4 + char5;
+
+    numUserGuess++;
+    userGuessList.push(myguess);\
+    var count = count(myguess,userWord)
+    userCorrectCountList.push = count;
+    printGuess(table,numUserGuess,myguess,count);
+    checkGuess(myguess, userWord, "user");
+  }
+}
+
+/* User function end */
+
 
 /* Computer function start */
-/*
+
 function computerInit(){
-  computerWord = random(fullArray); change to dictArray!!!!
-  currentArray = fullArray;
+  computerWord = random(dictArray);
+  currentArray = dictArray;
 }
 
-function computerPlay(){
-  computerGuess(currentArray);
-
-}
-
-function computerGuess(array){
+function computerGuess(current_array){
   numComGuess++;
-  var guess = random(currentArray);
+  var guess = random(current_array);
   computerGuessList.push(guess);\
     var count = count(guess,computerWord)
   computerCorrectCountList.push = count;
   printGuess(table,numComGuess,guess,count);
   checkGuess(guess, computerWord, "computer");
-  currentArray = refine_array(computerWord, count, currentArray);
+  currentArray = refine_array(computerWord, count, current_array);
 }
 
 function random(arr){
@@ -248,5 +233,5 @@ function popUpWinner(){
   //pop up winner window
   //end the game
 }
-*/
+
 /* Computer function end */
