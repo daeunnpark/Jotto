@@ -239,9 +239,93 @@ function checkGuess(guess, word, player) {
   }
 }
 
-function saveHistory() {
-  //send the game result to DB
+function saveHistory(){
+
+
+
+  //SEND GAME DATAS
+  $.ajax({
+    type: "POST",
+
+    url: "/game/saveGame",
+
+    data: "player1=" + currentUserName + "&winner=" + winner + "&userword=" + userWord + "&computerWord=" + computerWord,
+    success: function (response) {
+      alert(response);
+    },
+    error: function (e) {
+      alert('Error: ' + e);
+    }
+  });
+
+
+  //SEND ALL THE DATAS FOR USERS
+  for (let k = 0; k < userGuessList.length; k++ ) {
+    var Log = {
+      "logID": 0,
+      "username": currentUserName,
+      "game_ID": 0,
+      "date": "TobeAdded",
+      "word": userGuessList[k],
+      "letterCount": userCorrectCountList[k]
+    }
+    var data = JSON.stringify(Log);
+    $.ajax({
+      type: "POST",
+
+      url: "/log/saveGameLog",
+
+      contentType: "application/json; charset=utf-8",
+
+      dataType: "json",
+
+      data: "logData=" + data,
+      success: function (response) {
+        alert(response);
+      },
+      error: function (e) {
+        alert('Error: ' + e);
+      }
+    });
+  }
+
+
+  //SEND ALL THE LOGS FOR COMPUTERS
+  for (let l = 0; l < userGuessList.length; l++ ) {
+    var Log = {
+      "logID": 0,
+      "username": "Computer",
+      "game_ID": 0,
+      "date": "TobeAdded",
+      "word": computerGuessList[l],
+      "letterCount": userCorrectCountList[l]
+    }
+    var data = JSON.stringify(Log);
+    $.ajax({
+      type: "POST",
+
+      url: "/log/saveGameLog",
+
+      contentType: "application/json; charset=utf-8",
+
+      dataType: "json",
+
+      data: "logData=" + data,
+
+      success: function (response) {
+        alert(response);
+      },
+      error: function (e) {
+        alert('Error: ' + e);
+      }
+    });
+  }
+
+
+
+
 }
+
 
 function popUpWinner() {
   alert("Winner is " + winner);

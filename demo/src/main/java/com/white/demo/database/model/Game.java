@@ -20,6 +20,36 @@ public class Game {
 
     private String date;
 
+    private String winner;
+
+    private String userWord;
+
+    private String computerWord;
+
+    public String getUserWord(){
+        return this.userWord;
+    }
+
+    public String getComputerWord(){
+        return this.computerWord;
+    }
+
+    public void setUserWord(String userWord){
+        this.userWord = userWord;
+    }
+
+    public void setComputerWord(String computerWord){
+        this.computerWord = computerWord;
+    }
+
+    public String getWinner(){
+        return this.winner;
+    }
+
+    public void setWinner(String winnder){
+        this.winner = winnder;
+    }
+
     public int getGame_ID(){
         return this.game_ID;
     }

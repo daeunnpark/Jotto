@@ -1,19 +1,18 @@
 package com.white.demo.database.GameController;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
 
 import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 import com.white.demo.database.model.GameLog;
@@ -27,6 +26,7 @@ import com.white.demo.database.Repositories.GameRepository;
 import com.white.demo.database.Repositories.LoginRepository;
 import java.util.Date;
 
+
 @Controller    // This means that this class is a Controller
 @RequestMapping(path="/game") // This means URL's start with /demo (after Application path)
 public class GameController {
@@ -38,25 +38,25 @@ public class GameController {
     //private GameLogRepository logRepository;
     public static int gamecount = 0;
 
-    //Date d = new Date();
 
-    Date d = new Date();
+    //Date d = new Date();
 
     @GetMapping(path="/addGame") // Map ONLY GET Requests
     public @ResponseBody String addNewGame (@RequestParam int game_ID,
-                                            @RequestParam String Player1, @RequestParam String Player2) {
+                                            @RequestParam String Player1, @RequestParam String Player2, @RequestParam String winner) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-
+        Date d = new Date();
         Game g = new Game();
         g.setGame_ID(game_ID);
         g.setPlayer1(Player1);
         g.setPlayer2(Player2);
         g.setDate(d.toGMTString());
+        g.setWinner(winner);
         this.gameRepository.save(g);
 
-        return "GameCount: " + gamecount++;
+        return "GameCount: " + gamecount;
 
     }
 
@@ -65,18 +65,44 @@ public class GameController {
 
         ModelAndView mv =  new ModelAndView("history");
 
-        mv.addObject("message", "thisismsg");
-        mv.addObject("game_ID", "ABC");
-        mv.addObject("player1", "SSSS");
-        mv.addObject("date", "2018-01-01");
-
         /*This not working. findByplayer1 is empty*/
-
         List<Game> g = gameRepository.findByplayer1(LoginController.name);
+
         mv.addObject("games", g);
 
         return mv;
     }
+
+    @RequestMapping(value = "/saveGame", method = RequestMethod.POST)
+    public @ResponseBody String saveGame(@RequestParam(value = "player1") String player1, @RequestParam(value= "winner") String
+            winner, @RequestParam(value = "userWord") String userWord,
+                                         @RequestParam(value = "computerWord") String computerWord) {
+
+        Date d = new Date();
+        int largeID = -1;
+        for (Game ga : gameRepository.findAll()){
+            if (ga.getGame_ID() > largeID){
+                largeID = ga.getGame_ID();
+
+            }
+        }
+
+        int gameID = largeID +1;
+        gamecount = gameID;
+        Game g = new Game();
+        g.setGame_ID(gameID);
+        g.setPlayer1(player1);
+        g.setPlayer2("COMPUTER");
+        g.setDate(d.toGMTString());
+        g.setUserWord(userWord);
+        g.setComputerWord(computerWord);
+        g.setWinner(winner);
+        this.gameRepository.save(g);
+
+        return "GAME SAVED";
+    }
+
+
 
     /*
     @RequestMapping(value = "/history", method = RequestMethod.GET)
@@ -94,6 +120,7 @@ public class GameController {
         // }
         return mv;
     }
+*/
 
     @GetMapping(path="/allGame")
     public @ResponseBody Iterable<Game> getAllGame() {
@@ -101,7 +128,6 @@ public class GameController {
         return gameRepository.findAll();
     }
 
-*/
 
 
 
