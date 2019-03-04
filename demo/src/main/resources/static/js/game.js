@@ -137,9 +137,9 @@ function is_valid(guess) {
 }
 
 function color_code(letter, color) {
-  var table = document.getElementById("userGuessTable");
+  var table = document.getElementById("userTable");
+  // skip header
   for (var r = 1, n = table.rows.length; r < n; r++) {
-    // skip header
     str = table.rows[r].cells[1].innerHTML;
 
     // replaceAll
