@@ -6,11 +6,26 @@
   lang="en"
 >
   <head>
+<<<<<<< HEAD
+    <link
+      href="../static/css/modal_game.css"
+      th:href="@{/css/modal_game.css}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="../static/css/history.css"
+      th:href="@{/css/history.css}"
+      rel="stylesheet"
+      media="screen"
+    />
+=======
 
     <meta charset="UTF-8" />
 
     <link href="../static/css/game.css" th:href="@{/css/game.css}" rel="stylesheet" media="screen" />
     <link href="../static/css/history.css" th:href="@{/css/history.css}" rel="stylesheet" media="screen" />
+>>>>>>> 0752f827f42ea25ebf2ae022b7d868a0aa02cbd2
     <link
       rel="stylesheet"
       type="text/css"
@@ -28,6 +43,7 @@
       src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
     ></script>
   </head>
+
   <body>
     <form action="/menu" method="GET">
       <div class="flex dark">
@@ -39,10 +55,74 @@
 
     <div id="content">
       <h1>History</h1>
+
+      <tr th:each="game : ${games}">
+        <td th:text="${game.date}"></td>
+        <td th:text="${game.player1}"></td>
+      </tr>
+
       <p th:text="${message}"></p>
       <p th:text="${game_ID}"></p>
       <p th:text="${player1}"></p>
       <p th:text="${date}"></p>
+
+      <ul class="timeline">
+        <!--
+        <li class="event" th:data-date="${game.date}">
+          <h3 th:text="${game.player1}">VS </h3>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#historyModal1"
+          >
+          </button>
+        </li>
+        -->
+
+        <li class="event" data-date="2019-02-10">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#historyModal"
+          >
+            VS Computer
+          </button>
+        </li>
+
+        <li class="event" data-date="2019-02-01">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#historyModal"
+          >
+            VS Computer
+          </button>
+        </li>
+
+        <li class="event" data-date="2019-01-10">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#historyModal"
+          >
+            VS Computer
+          </button>
+        </li>
+        <li class="event" data-date="2019-01-01">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-toggle="modal"
+            data-target="#historyModal"
+          >
+            VS Computer
+          </button>
+        </li>
+      </ul>
 
       <!--
       <table>
@@ -58,15 +138,33 @@
           <td th:text="${game.date}"></td>
         </tr>
       </table>
+
+
+
+      <div id="content">
+        <h1>History</h1>
+      
+        <ul class="timeline">
+          <li class="event" data-date="2019-02-20">
+            <h3>ONE</h3>
+          </li>
+          <li class="event" data-date="2019-02-10">
+            <h3>TWO</h3>
+          </li>
+          <li class="event" data-date="2019-02-01">
+            <h3>THREE</h3>
+          </li>
+          <li class="event" data-date="2019-01-10">
+            <h3>FOUR</h3>
+          </li>
+          <li class="event" data-date="2019-01-01">
+            <h3>FIVE</h3>
+          </li>
+        </ul>
+      </div>
+
+
 -->
-      <button
-        type="button"
-        class="btn btn-primary btn-lg"
-        data-toggle="modal"
-        data-target="#historyModal"
-      >
-        Game 1
-      </button>
     </div>
 
     <!-- History modal -->
@@ -82,108 +180,144 @@
           </div>
           <div class="modal-body modal-xl">
             <section>
-              <div class="container-fluid">
-                <div class="container">
-                  <div class="row">
-                    <!-- START COMPUTER -->
-                    <div class="col-md-6">
-                      <div class="card text-center">
-                        <div class="title">
-                          <i class="fa fa-robot" aria-hidden="true"></i>
-                          <h2>Computer</h2>
-                        </div>
-
-                        <div class="col-md-12">
-                          <table class="wordTable">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-
-                        <div class="option">
-                          <table class="Table">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>WORD</th>
-                                <th>COUNT</th>
-                              </tr>
-                            </thead>
-                            <tbody id="computer_table"></tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- END COMPUTER -->
-
-                    <!-- START USER -->
-                    <div class="col-md-6">
-                      <div class="card text-center">
-                        <div class="title">
-                          <i class="fa fa-user" aria-hidden="true"></i>
-                          <h2>User</h2>
-                        </div>
-
-                        <div class="col-md-12">
-                          <table class="wordTable">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                                <td>
-                                  <input type="text" class="form-control" />
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-
-                        <div class="option">
-                          <table class="Table" id="userGuessTable">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>WORD</th>
-                                <th>COUNT</th>
-                              </tr>
-                            </thead>
-
-                            <tbody id="user_table"></tbody>
-                          </table>
-                        </div>
-                      </div>
+              <div class="container">
+                <!-- START COMPUTER -->
+                <div class="col-md-6">
+                  <div class="card text-center">
+                    <div class="title">
+                      <i class="fa fa-robot" aria-hidden="true"></i>
+                      <h2>Computer</h2>
                     </div>
 
-                    <!-- END USER -->
+                    <div class="col-md-12">
+                      <table class="wordTable">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="option">
+                      <table class="Table">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>WORD</th>
+                            <th>COUNT</th>
+                          </tr>
+                        </thead>
+                        <tbody id="computer_table"></tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
+                <!-- END COMPUTER -->
+
+                <!-- START USER -->
+                <div class="col-md-6">
+                  <div class="card text-center">
+                    <div class="title">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <h2>User</h2>
+                    </div>
+
+                    <div class="col-md-12">
+                      <table class="wordTable">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                            <td>
+                              <input
+                                type="text"
+                                style="text-transform:uppercase"
+                                class="form-control"
+                              />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div class="option">
+                      <table class="Table" id="userGuessTable">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>WORD</th>
+                            <th>COUNT</th>
+                          </tr>
+                        </thead>
+
+                        <tbody id="user_table"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- END USER -->
               </div>
             </section>
           </div>
@@ -193,6 +327,7 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
     <!-- END History modal -->
   </body>
 </html>
