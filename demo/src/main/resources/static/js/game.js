@@ -21,7 +21,7 @@ var firstTimePlaying = 1;
 //for legal_words.txt
 var dictArray = [];
 var word_list_URL =
-  "https://raw.githubusercontent.com/daeunnpark/daeunnpark.github.io/master/legal_words.txt";
+    "https://raw.githubusercontent.com/daeunnpark/daeunnpark.github.io/master/legal_words.txt";
 
 // Global variables end
 
@@ -86,19 +86,19 @@ document.getElementById("submitbtn2").addEventListener("click", function() {
 });
 
 document.querySelectorAll(".letterboard td").forEach(e =>
-  e.addEventListener("click", function() {
-    if (this.style.backgroundColor == "green") {
-      this.style.backgroundColor = "red";
-    } else if (this.style.backgroundColor == "red") {
-      this.style.backgroundColor = "white";
-    } else if (this.style.backgroundColor == "white") {
-      this.style.backgroundColor = "green";
-    } else {
-      // first click
-      this.style.backgroundColor = "green";
-    }
-    color_code(this.textContent.trim(), this.style.backgroundColor);
-  })
+e.addEventListener("click", function() {
+  if (this.style.backgroundColor == "green") {
+    this.style.backgroundColor = "red";
+  } else if (this.style.backgroundColor == "red") {
+    this.style.backgroundColor = "white";
+  } else if (this.style.backgroundColor == "white") {
+    this.style.backgroundColor = "green";
+  } else {
+    // first click
+    this.style.backgroundColor = "green";
+  }
+  color_code(this.textContent.trim(), this.style.backgroundColor);
+})
 );
 
 function color_code(letter, color) {
@@ -123,13 +123,13 @@ window.alert(
       for (var i = 0; i < str.length; i++) {
         if (str.charAt(i) === letter) {
           table.rows[r].cells[1].innerHTML =
-            str.substring(0, i) +
-            '<span style="background-color:' +
-            color +
-            '">' +
-            str.charAt(i) +
-            "</span>" +
-            str.substring(i + 1);
+              str.substring(0, i) +
+              '<span style="background-color:' +
+              color +
+              '">' +
+              str.charAt(i) +
+              "</span>" +
+              str.substring(i + 1);
         }
       }
     }
