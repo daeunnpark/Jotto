@@ -2,7 +2,7 @@
 //for history
 var currentUserName = "";
 var time;
-var userWord="basic";
+var userWord="";
 var computerWord="";
 var userGuessList = [];
 var userCorrectCountList = [];
@@ -27,8 +27,6 @@ var word_list_URL =
 
 $(window).load(function() {
   $("#secretWordModal").modal("show");
-  //user_init()
-  //computerWord = document.getElementById("secret_word").value;
 });
 
 /* Load txt file from web and store it in array Not working with local file */
@@ -41,11 +39,6 @@ $(document).ready(function() {
     currentArray = dictArray;
   });
 });
-
-//document.getElementById("hello1").html = dictArray;
-//userWord = random(dictArray);
-
-
 
 /* attach a submit handler to the form */
 
