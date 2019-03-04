@@ -139,8 +139,28 @@ section {
   width: 70%;
 }
 
+input {
+  text-transform: uppercase;
+}
 ::-webkit-input-placeholder {
-  text-transform: initial;
+  /* WebKit browsers */
+  text-transform: lowercase;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  text-transform: lowercase;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  text-transform: lowercase;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  text-transform: lowercase;
+}
+::placeholder {
+  /* Recent browsers */
+  text-transform: lowercase;
 }
 
 /*Go back to Menu btn*/
