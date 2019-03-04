@@ -25,6 +25,8 @@ dependencies {
 	compile("org.springframework:spring-jdbc")
 
 	testCompile("junit:junit")
+	compile 'org.json:json:20171018'
+	compile 'com.googlecode.json-simple:json-simple:1.1.1'
 
 	compile 'mysql:mysql-connector-java'
 

@@ -60,21 +60,21 @@
             </div>
 
             <div class="col-md-12">
-              <table class="wordTable">
+              <table id = "computer_secret_word"class="wordTable">
                 <tbody>
                 <tr>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "comp_letter_1" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "comp_letter_2" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "comp_letter_3" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "comp_letter_4" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "comp_letter_5" style="text-transform:uppercase" class="form-control" /></td>
                 </tr>
                 </tbody>
               </table>
             </div>
 
             <div class="option">
-              <table class="Table" id="computerGuessTable">
+              <table class="Table"> <!--id="computerGuessTable moved to tbody-->
                 <thead>
                 <tr>
                   <th>#</th>
@@ -82,7 +82,7 @@
                   <th>COUNT</th>
                 </tr>
                 </thead>
-                <tbody id="computer_table"></tbody>
+                <tbody id="computerGuessTable"></tbody>
               </table>
             </div>
           </div>
@@ -104,18 +104,18 @@
               <table class="wordTable">
                 <tbody>
                 <tr>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
-                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "user_letter_1" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "user_letter_2" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "user_letter_3" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "user_letter_4" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" id = "user_letter_5" style="text-transform:uppercase" class="form-control" /></td>
                 </tr>
                 </tbody>
               </table>
             </div>
 
             <div class="option">
-              <table class="Table" id="userGuessTable">
+              <table class="Table" id = "userTable"> <!--id="userGuessTable moved to tbody-->
                 <thead>
                 <tr>
                   <th>#</th>
@@ -123,7 +123,7 @@
                   <th>COUNT</th>
                 </tr>
                 </thead>
-                <tbody id="user_table"></tbody>
+                <tbody id="userGuessTable"></tbody>
               </table>
             </div>
 
@@ -261,7 +261,7 @@
         <!-- add input checking from backend -->
         <div class="modal-body text-center">
           <label for="label" class="col-form-label">Enter your secret word.</label>
-          <input type="text" id="secret_word" class="form-control"
+          <input type="text" id="secret_word" class="form-control" style="text-transform:uppercase"
                  placeholder="5 letter word without repeating letters" maxlength="5" required pattern="[A-Za-z]{5}" />
         </div>
 

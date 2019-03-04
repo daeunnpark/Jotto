@@ -87,7 +87,7 @@ h1 {
   top: 0;
 }
 .timeline .event:before {
-  left: -217.5px;
+  left: -350px; /* FOR DATE + TIME*/
   color: rgba(12, 104, 180, 0.4);
   content: attr(data-date);
   text-align: right;
@@ -158,19 +158,15 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  .modal-xl {
-    width: 100vh;
-    left: 0;
-    margin-left: 0;
-    top: 0;
-    margin-top: 0 !important;
-    height: 100%;
-  }
+  .modal-body {
+    align-items: center;
+    justify-content: center;
 
-  .modal-content {
-    /* width: 1000px;
-    height:100%;*/
-    /*max-height: calc(100vh - 200px);
-    overflow-y: hidden;*/
+    /*max-height: calc(100vh - 200px);*/
+    /*overflow-y: hidden;*/
+  }
+  .modal-xl {
+    width: 90%;
+    height: 100%;
   }
 }

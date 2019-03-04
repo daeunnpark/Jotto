@@ -32,10 +32,7 @@ section {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-.card:hover {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
+
 .col-md-6:nth-child(1) .card,
 .col-md-6:nth-child(1) .card .title .fa {
   background: linear-gradient(-45deg, #ffeedd, #ddeeff);
@@ -57,21 +54,6 @@ section {
   /*z-index: -1;*/
   -webkit-transform: skewY(-5deg) scale(1.5);
   transform: skewY(-5deg) scale(1.5);
-}
-
-.title .row a {
-  /*position: absolute; INSERTED FOR HINT BUT DIABLED THE SECOND HALF OF TABLE
-  right: 0;*/
-}
-
-.title .row {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
 .title .fa {
