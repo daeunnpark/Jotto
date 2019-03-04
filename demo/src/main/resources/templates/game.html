@@ -275,16 +275,6 @@
               OK
             </button>
 
-            <script>
-              $("#inputform").submit(function (e) {
-                e.preventDefault();
-                if (is_valid(document.getElementById("secret_word").value)) {
-                  $("#secretWordModal").modal("hide");
-                }
-                return false;
-              });
-
-            </script>
           </div>
         </div>
       </form>
@@ -335,6 +325,7 @@
 
   <script src="../static/js/input.js" th:src="@{/js/input.js}"></script>
   <script type="text/javascript" src="../static/js/game.js" th:src="@{/js/game.js}"></script>
+<p id="hello1"></p>
 </body>
 
 </html>

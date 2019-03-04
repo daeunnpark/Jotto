@@ -2,8 +2,8 @@
 //for history
 var currentUserName = "";
 var time;
-var userWord;
-var computerWord = "grave";
+var userWord="basic";
+var computerWord="";
 var userGuessList = [];
 var userCorrectCountList = [];
 var computerGuessList = [];
@@ -27,6 +27,8 @@ var word_list_URL =
 
 $(window).load(function() {
   $("#secretWordModal").modal("show");
+  //user_init()
+  //computerWord = document.getElementById("secret_word").value;
 });
 
 /* Load txt file from web and store it in array Not working with local file */
@@ -35,10 +37,72 @@ $(document).ready(function() {
     /*alert("Word list is loaded");*/
     var word_list = response;
     dictArray = word_list.split("\n");
-    computerInit();
+    userWord = random(dictArray);
+    currentArray = dictArray;
   });
 });
 
+//document.getElementById("hello1").html = dictArray;
+//userWord = random(dictArray);
+
+
+
+/* attach a submit handler to the form */
+
+$("#inputform").submit(function (e) {
+  e.preventDefault();
+  var value = document.getElementById("secret_word").value
+  if (is_valid(value)) {
+    computerWord = value;
+    $("#secretWordModal").modal("hide");
+  }
+  return false;
+});
+
+$("#inputform2").submit(function(event) {
+  var url = "/guess"; // the script where you handle the form input.
+
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: $("#inputform2").serialize(), // serializes the form's elements.
+    success: function(data) {
+      alert(data); // show response from the php script.
+    }
+  });
+  /*document.getElementById(letter_1).innerHTML = "";*/
+
+  return false; // avoid to execute the actual submit of the form.
+});
+
+document.getElementById("inputform2").addEventListener("submit", function() {
+  user_guess();
+  computerGuess(currentArray);
+});
+
+/*
+document.getElementById("submitbtn2").addEventListener("submit", function() {
+  alert("submitted");
+  user_guess();
+  computerGuess(currentArray);
+});
+*/
+
+document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("click", function() {
+    if (this.style.backgroundColor == "green") {
+      this.style.backgroundColor = "red";
+    } else if (this.style.backgroundColor == "red") {
+      this.style.backgroundColor = "white";
+    } else if (this.style.backgroundColor == "white") {
+      this.style.backgroundColor = "green";
+    } else {
+      // first click
+      this.style.backgroundColor = "green";
+    }
+    color_code(this.textContent.trim(), this.style.backgroundColor);
+  }));
+
+/* event handler helper function start */
 function is_valid(guess) {
   if (dictArray.includes(guess)) {
     alert("List contains this word : " + guess);
@@ -63,52 +127,6 @@ function is_valid(guess) {
   return false;
 }
 
-/* attach a submit handler to the form */
-$("#inputform2").submit(function(event) {
-  var url = "/guess"; // the script where you handle the form input.
-
-  $.ajax({
-    type: "POST",
-    url: url,
-    data: $("#inputform2").serialize(), // serializes the form's elements.
-    success: function(data) {
-      alert(data); // show response from the php script.
-    }
-  });
-  /*document.getElementById(letter_1).innerHTML = "";*/
-
-  return false; // avoid to execute the actual submit of the form.
-});
-
-document.getElementById("inputform2").addEventListener("submit", function() {
-  user_guess();
-  computerGuess(currentArray);
-});
-
-//"#inputform2").submit
-/*
-document.getElementById("submitbtn2").addEventListener("submit", function() {
-  alert("submitted");
-  user_guess();
-  computerGuess(currentArray);
-});
-*/
-document.querySelectorAll(".letterboard td").forEach(e =>
-  e.addEventListener("click", function() {
-    if (this.style.backgroundColor == "green") {
-      this.style.backgroundColor = "red";
-    } else if (this.style.backgroundColor == "red") {
-      this.style.backgroundColor = "white";
-    } else if (this.style.backgroundColor == "white") {
-      this.style.backgroundColor = "green";
-    } else {
-      // first click
-      this.style.backgroundColor = "green";
-    }
-    color_code(this.textContent.trim(), this.style.backgroundColor);
-  })
-);
-
 function color_code(letter, color) {
   var table = document.getElementById("userGuessTable");
   for (var r = 1, n = table.rows.length; r < n; r++) {
@@ -127,12 +145,13 @@ function color_code(letter, color) {
     }
   }
 }
+/* event handler helper function end */
 
-function userG() {
-  var table = document.getElementById("userGuessTable");
-  printGuess(table, 1, "hello", 1);
-}
 /* User function start */
+function user_init(){
+  computerWord = document.getElementById("secret_word").value;
+}
+
 function user_guess() {
   var table = document.getElementById("userGuessTable");
   var char1 = document.getElementById("letter_1").value;
@@ -150,23 +169,21 @@ function user_guess() {
       char5 === ""
     )
   ) {
-    var myGuess = (char1 + char2 + char3 + char4 + char5).toUpperCase();
+    var myGuess = (char1 + char2 + char3 + char4 + char5);
 
     numUserGuess++;
     userGuessList.push(myGuess);
-    var count1 = count("grave", "basic");
+    var count1 = count(myGuess, userWord);
     userCorrectCountList.push(count1);
     printGuess(table, numUserGuess, myGuess, count1);
     checkGuess(myGuess, userWord, "user");
   }
 }
-
 /* User function end */
 
 /* Computer function start */
-
 function computerInit() {
-  computerWord = random(dictArray);
+  userWord = random(dictArray);
   currentArray = dictArray;
 }
 
@@ -179,7 +196,7 @@ function computerGuess(current_array) {
   var table = document.getElementById("computerGuessTable");
   printGuess(table, numComGuess, guess, count1);
   checkGuess(guess, computerWord, "computer");
-  currentArray = refine_array(computerWord, count1, current_array);
+  currentArray = refine_array(guess, count1, current_array);
 }
 
 function random(arr) {
@@ -190,20 +207,20 @@ function count(word1, word2) {
   var charArr1 = word1.split("");
   var charArr2 = word2.split("");
   var i;
-  var count = 0;
+  var count1 = 0;
   for (i = 0; i < charArr1.length; i++) {
     if (charArr2.includes(charArr1[i])) {
-      count++;
+      count1++;
     }
   }
-  return count;
+  return count1;
 }
 
-function refine_array(word, count, array) {
+function refine_array(word, count1, array) {
   var temp = [];
   var i;
   for (i = 0; i < array.length; i++) {
-    if (count(word, array[i]) == count) {
+    if (count(word, array[i]) == count1) {
       temp.push(array[i]);
     }
   }
@@ -217,7 +234,7 @@ function printGuess(table, numGuess, guess, count) {
   var cell3 = row.insertCell(2);
 
   cell1.innerHTML = numGuess;
-  cell2.innerHTML = guess;
+  cell2.innerHTML = guess.toUpperCase();
   cell3.innerHTML = count;
 }
 
@@ -234,8 +251,8 @@ function saveHistory() {
 }
 
 function popUpWinner() {
+  alert("Winner is " + winner);
   //pop up winner window
   //end the game
 }
-
 /* Computer function end */
