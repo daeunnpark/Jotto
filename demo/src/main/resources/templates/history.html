@@ -6,33 +6,27 @@
   lang="en"
 >
   <head>
+
+    <link href="../static/css/game.css" th:href="@{css/game.css}" rel="stylesheet" media="screen" />
+    <link href="../static/css/history.css" th:href="@{css/history.css}" rel="stylesheet" media="screen" />
     <link
       rel="stylesheet"
       type="text/css"
+      th:href="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css}"
       href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
     />
-    <link
-      href="../static/css/history.css"
-      th:href="@{css/history.css}"
-      rel="stylesheet"
-      media="screen"
-    />
-    <link
-      href="../static/css/game.css"
-      th:href="@{css/game.css}"
-      rel="stylesheet"
-      media="screen"
-    />
 
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script
+      th:src="@{http://code.jquery.com/jquery.js}"
+      src="http://code.jquery.com/jquery.js"
+    ></script>
     <script
       type="text/javascript"
+      th:src="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}"
       src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
     ></script>
   </head>
   <body>
-    <h1 th:text="${message}"></h1>
-
     <form action="/menu" method="GET">
       <div class="flex dark">
         <button type="submit" class="bttn-dark">
@@ -43,16 +37,11 @@
 
     <div id="content">
       <h1>History</h1>
-
+      <p th:text="${message}"></p>
       <p th:text="${game_ID}"></p>
       <p th:text="${player1}"></p>
       <p th:text="${date}"></p>
 
-      <tr th:each="game : ${games}">
-        <td th:text="${game.game_ID}"></td>
-        <td th:text="${game.date}"></td>
-        <td th:text="${game.player1}"></td>
-      </tr>
       <!--
       <table>
         <tr>
@@ -183,6 +172,7 @@
                                 <th>COUNT</th>
                               </tr>
                             </thead>
+
                             <tbody id="user_table"></tbody>
                           </table>
                         </div>

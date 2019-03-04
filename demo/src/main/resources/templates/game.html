@@ -3,7 +3,7 @@
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 
 <head>
-  <link href="../static/css/game.css" th:href="@{css/game.css}" rel="stylesheet" media="screen" />
+
   <meta charset="UTF-8" />
   <title>Jotto</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,23 +14,26 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
   rel="stylesheet"/>
  -->
+  <link href="../static/css/game.css" th:href="@{css/game.css}" rel="stylesheet" media="screen" />
 
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.7.2/css/all.css}" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-  
-  
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <link rel="stylesheet" type="text/css" th:href ="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css}" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
 
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+
+  <script th:src="@{http://code.jquery.com/jquery-1.9.1.js}" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+  <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js}" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
   </script>
-  <script src="http://code.jquery.com/jquery.js"></script>
-  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script th:src = "@{http://code.jquery.com/jquery.js}" src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" th:src = "@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link th:href ="@{vendor/bootstrap/css/bootstrap.min.css}" href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+  
 
 
 </head>
@@ -254,8 +257,10 @@
 
   <!--MODALS-->
 
+  <!-- /*data-backdrop="static" data-keyboard="false*/ to add in modal class to disable closing-->
+
   <!-- Start Secret word input modal -->
-  <div class="modal fade" id="secretWordModal" tabindex="-1" role="dialog" aria-labelledby="secretWordModalLabel">
+  <div class="modal fade" id="secretWordModal" tabindex="-1" role="dialog" aria-labelledby="secretWordModalLabel"  >
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content ">
         <div class="modal-header">
@@ -337,13 +342,8 @@
 
   <!-- Plugin JavaScript -->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  
 
-  <!-- Contact form JavaScript -->
-  <script src="js/jqBootstrapValidation.js"></script>
-  <script src="js/contact_me.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="js/agency.min.js"></script>
   <script src="../static/js/input.js" th:src="@{/js/input.js}"></script>
   <script type="text/javascript" src="../static/js/game.js" th:src="@{/js/game.js}"></script>
 </body>

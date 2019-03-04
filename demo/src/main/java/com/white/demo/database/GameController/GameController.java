@@ -1,13 +1,15 @@
 package com.white.demo.database.GameController;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
 
@@ -69,6 +71,7 @@ public class GameController {
         mv.addObject("date", "2018-01-01");
 
         /*This not working. findByplayer1 is empty*/
+
         List<Game> g = gameRepository.findByplayer1(LoginController.name);
         mv.addObject("games", g);
 
@@ -91,7 +94,6 @@ public class GameController {
         // }
         return mv;
     }
-*/
 
     @GetMapping(path="/allGame")
     public @ResponseBody Iterable<Game> getAllGame() {
@@ -99,6 +101,7 @@ public class GameController {
         return gameRepository.findAll();
     }
 
+*/
 
 
 
