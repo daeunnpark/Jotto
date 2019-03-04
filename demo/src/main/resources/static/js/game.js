@@ -197,7 +197,7 @@ function computerGuess(current_array) {
   var guess = random(current_array);
   computerGuessList.push(guess);
   var count1 = count(guess, computerWord);
-  computerCorrectCountList.push(count);
+  computerCorrectCountList.push(count1);
   var table = document.getElementById("computerGuessTable");
   printGuess(table, numComGuess, guess, count1);
   checkGuess(guess, computerWord, "computer");
