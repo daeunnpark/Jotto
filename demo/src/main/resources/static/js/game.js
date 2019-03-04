@@ -2,8 +2,8 @@
 //for history
 var currentUserName = "";
 var time;
-var userWord = "";
-var computerWord = "";
+var userWord;
+var computerWord = "grave";
 var userGuessList = [];
 var userCorrectCountList = [];
 var computerGuessList = [];
@@ -35,6 +35,7 @@ $(document).ready(function() {
     /*alert("Word list is loaded");*/
     var word_list = response;
     dictArray = word_list.split("\n");
+    computerInit();
   });
 });
 
@@ -80,9 +81,8 @@ $("#inputform2").submit(function(event) {
 });
 
 document.getElementById("submitbtn2").addEventListener("click", function() {
-  table = document.getElementById("userGuessTable");
-  user_guess(table);
-  computerGuess(table, currentArray);
+  user_guess();
+  computerGuess(currentArray);
 });
 
 document.querySelectorAll(".letterboard td").forEach(e =>
@@ -137,8 +137,13 @@ window.alert(
   }
 }
 
+function userG(){
+  var table = document.getElementById("userGuessTable");
+  printGuess(table,1,"hello",1);
+}
 /* User function start */
-function user_guess(table){
+function user_guess(){
+  var table = document.getElementById("userGuessTable");
   var char1 = document.getElementById("letter_1").value;
   var char2 = document.getElementById("letter_2").value;
   var char3 = document.getElementById("letter_3").value;
@@ -150,9 +155,9 @@ function user_guess(table){
 
     numUserGuess++;
     userGuessList.push(myGuess);
-    var count = count(myGuess,userWord);
-    userCorrectCountList.push = count;
-    printGuess(table,numUserGuess,myGuess,count);
+    var count1 = count("grave","basic");
+    userCorrectCountList.push(count1);
+    printGuess(table,numUserGuess,myGuess,count1);
     checkGuess(myGuess, userWord, "user");
   }
 }
@@ -167,28 +172,29 @@ function computerInit(){
   currentArray = dictArray;
 }
 
-function computerGuess(table, current_array){
+function computerGuess(current_array){
   numComGuess++;
   var guess = random(current_array);
   computerGuessList.push(guess);
-  var count = count(guess,computerWord);
-  computerCorrectCountList.push = count;
-  printGuess(table,numComGuess,guess,count);
+  var count1 = count(guess,computerWord);
+  computerCorrectCountList.push(count);
+  var table = document.getElementById("computerGuessTable");
+  printGuess(table,numComGuess,guess,count1);
   checkGuess(guess, computerWord, "computer");
-  currentArray = refine_array(computerWord, count, current_array);
+  currentArray = refine_array(computerWord, count1, current_array);
 }
 
 function random(arr){
-  return arr[Math.random()*arr.length];
+  return arr[Math.floor(Math.random()*arr.length)];
 }
 
 function count(word1, word2){
-  var chaArr1 = word1.split('');
-  var chaArr2 = word2.split('');
+  var charArr1 = word1.split('');
+  var charArr2 = word2.split('');
   var i;
   var count = 0;
-  for(i=0; i<chaArr1.length; i++){
-    if(chaArr2.includes(chaArr1[i])){
+  for(i=0; i<charArr1.length; i++){
+    if(charArr2.includes(charArr1[i])){
       count++;
     }
   }
