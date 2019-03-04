@@ -35,7 +35,7 @@ $(document).ready(function() {
     /*alert("Word list is loaded");*/
     var word_list = response;
     dictArray = word_list.split("\n");
-    userWord = random(dictArray);
+    userWord = random(dictArray).toUpperCase();
     currentArray = dictArray;
   });
 });
@@ -162,7 +162,7 @@ function user_guess() {
       char5 === ""
     )
   ) {
-    var myGuess = (char1 + char2 + char3 + char4 + char5);
+    var myGuess = (char1 + char2 + char3 + char4 + char5).toUpperCase();
 
     numUserGuess++;
     userGuessList.push(myGuess);
@@ -244,7 +244,8 @@ function saveHistory() {
 }
 
 function popUpWinner() {
-  alert("Winner is " + winner);
+  alert("Winner is " + winner+ ", userword = " + userWord);
+
   //pop up winner window
   //end the game
 }
