@@ -237,7 +237,7 @@ table.Table td {
 }
 
 table.Table thead {
-  background-color: #eeeae2; /*#f3dcca; for comp*/
+  background-color: #fff; /*#f3dcca; #eeeae2for comp*/
   /*width: 100%;*/
   display: block;
 }

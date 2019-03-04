@@ -81,7 +81,6 @@ $("#inputform2").submit(function(event) {
 });
 
 document.getElementById("inputform2").addEventListener("submit", function() {
-  alert("submitted");
   user_guess();
   computerGuess(currentArray);
 });
@@ -115,34 +114,17 @@ function color_code(letter, color) {
   for (var r = 1, n = table.rows.length; r < n; r++) {
     // skip header
     str = table.rows[r].cells[1].innerHTML;
-    /*
-window.alert(
-"this is = " +
-  table.rows[r].cells[1].innerHTML +
-  "letter is " +
-  letter
-);
-*/
+
+    // replaceAll
+    var find = letter;
+    var re = new RegExp(find, "g");
+
     if (str.includes(letter)) {
-      /*
-                        window.alert(
-                          str + "contains " + letter + " " + str.charAt(0)
-                        );
-*/
-      for (var i = 0; i < str.length; i++) {
-        if (str.charAt(i) === letter) {
-          table.rows[r].cells[1].innerHTML =
-            str.substring(0, i) +
-            '<span style="background-color:' +
-            color +
-            '">' +
-            str.charAt(i) +
-            "</span>" +
-            str.substring(i + 1);
-        }
-      }
+      table.rows[r].cells[1].innerHTML = str.replace(
+        re,
+        '<span style="background-color:' + color + '">' + letter + "</span>"
+      );
     }
-    //break;
   }
 }
 
@@ -168,7 +150,7 @@ function user_guess() {
       char5 === ""
     )
   ) {
-    var myGuess = char1 + char2 + char3 + char4 + char5;
+    var myGuess = (char1 + char2 + char3 + char4 + char5).toUpperCase();
 
     numUserGuess++;
     userGuessList.push(myGuess);

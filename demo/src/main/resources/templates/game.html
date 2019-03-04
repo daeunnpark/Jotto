@@ -63,11 +63,11 @@
               <table class="wordTable">
                 <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
                 </tr>
                 </tbody>
               </table>
@@ -104,11 +104,11 @@
               <table class="wordTable">
                 <tbody>
                 <tr>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
-                  <td><input type="text" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
+                  <td><input type="text" style="text-transform:uppercase" class="form-control" /></td>
                 </tr>
                 </tbody>
               </table>
@@ -178,27 +178,27 @@
                   <tr>
                     <td>
                       <input type="text" name="letter_1" id="letter_1" required pattern="[A-Za-z]" maxlength="1"
-                             size="2;" class="form-control" />
+                             size="2;" style="text-transform:uppercase" class="form-control" />
                     </td>
 
                     <td>
                       <input type="text" name="letter_2" id="letter_2" required pattern="[A-Za-z]" maxlength="1"
-                             size="2;" class="form-control" />
+                             size="2;"style="text-transform:uppercase" class="form-control" />
                     </td>
 
                     <td>
                       <input type="text" name="letter_3" id="letter_3" required pattern="[A-Za-z]" maxlength="1"
-                             size="2;" class="form-control" />
+                             size="2;" style="text-transform:uppercase"class="form-control" />
                     </td>
 
                     <td>
                       <input type="text" name="letter_4" id="letter_4" required pattern="[A-Za-z]" maxlength="1"
-                             size="2;" class="form-control" />
+                             size="2;" style="text-transform:uppercase"class="form-control" />
                     </td>
 
                     <td>
                       <input type="text" name="letter_5" id="letter_5" required pattern="[A-Za-z]" maxlength="1"
-                             size="2;" class="form-control" />
+                             size="2;" style="text-transform:uppercase" class="form-control" />
                     </td>
                   </tr>
                   </tbody>
@@ -223,17 +223,6 @@
                 /*
                 document.getElementById(letter_1).innerHTML = "";
                 document.getElementById(letter_2).innerHTML = "";*/
-
-
-                $("button").click(function () {
-                  $("#div1").load("demo_test.txt", function (responseTxt, statusTxt, xhr) {
-                    if (statusTxt == "success")
-                      alert("External content loaded successfully!");
-                    if (statusTxt == "error")
-                      alert("Error: " + xhr.status + ": " + xhr.statusText);
-                  });
-                });
-
 
 
                 return false; // avoid to execute the actual submit of the form.
