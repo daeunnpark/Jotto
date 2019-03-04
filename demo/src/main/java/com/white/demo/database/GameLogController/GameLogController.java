@@ -3,27 +3,16 @@ package com.white.demo.database.GameLogController;
 import com.white.demo.database.GameController.GameController;
 import com.white.demo.database.LoginController.LoginController;
 import com.white.demo.database.Repositories.GameLogRepository;
-
 import com.white.demo.database.model.Game;
 import com.white.demo.database.model.GameLog;
-
-
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
-import com.white.demo.database.GameController.GameController;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.ArrayList;
-import org.json.simple.JSONObject;
-
-
 import java.util.Date;
-
-import org.json.*;
-import org.json.simple.JSONObject;
-
-import java.util.List;
 
 
 @Controller    // This means that this class is a Controller

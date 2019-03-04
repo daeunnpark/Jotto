@@ -144,6 +144,10 @@ section {
   width: 70%;
 }
 
+::-webkit-input-placeholder {
+  text-transform: initial;
+}
+
 /*Go back to Menu btn*/
 .flex {
   align-items: center;
