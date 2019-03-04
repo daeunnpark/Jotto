@@ -6,26 +6,8 @@
   lang="en"
 >
   <head>
-<<<<<<< HEAD
-    <link
-      href="../static/css/modal_game.css"
-      th:href="@{/css/modal_game.css}"
-      rel="stylesheet"
-      media="screen"
-    />
-    <link
-      href="../static/css/history.css"
-      th:href="@{/css/history.css}"
-      rel="stylesheet"
-      media="screen"
-    />
-=======
-
     <meta charset="UTF-8" />
 
-    <link href="../static/css/game.css" th:href="@{/css/game.css}" rel="stylesheet" media="screen" />
-    <link href="../static/css/history.css" th:href="@{/css/history.css}" rel="stylesheet" media="screen" />
->>>>>>> 0752f827f42ea25ebf2ae022b7d868a0aa02cbd2
     <link
       rel="stylesheet"
       type="text/css"
@@ -42,6 +24,19 @@
       th:src="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}"
       src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
     ></script>
+
+    <link
+      href="../static/css/history.css"
+      th:href="@{/css/history.css}"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link
+      href="../static/css/modal_game.css"
+      th:href="@{/css/modal_game.css}"
+      rel="stylesheet"
+      media="screen"
+    />
   </head>
 
   <body>
@@ -170,7 +165,7 @@
     <!-- History modal -->
     <div class="modal fade" id="historyModal">
       <div class="modal-dialog modal-xl">
-        <div class="modal-content ">
+        <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">&times;</span
@@ -178,7 +173,7 @@
             </button>
             <h4 class="modal-title">Game 1</h4>
           </div>
-          <div class="modal-body modal-xl">
+          <div class="modal-body">
             <section>
               <div class="container">
                 <!-- START COMPUTER -->
