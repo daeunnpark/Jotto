@@ -31,6 +31,8 @@
     ></script>
   </head>
   <body>
+    <h1 th:text="${message}"></h1>
+
     <form action="/menu" method="GET">
       <div class="flex dark">
         <button type="submit" class="bttn-dark">
@@ -42,6 +44,16 @@
     <div id="content">
       <h1>History</h1>
 
+      <p th:text="${game_ID}"></p>
+      <p th:text="${player1}"></p>
+      <p th:text="${date}"></p>
+
+      <tr th:each="game : ${games}">
+        <td th:text="${game.game_ID}"></td>
+        <td th:text="${game.date}"></td>
+        <td th:text="${game.player1}"></td>
+      </tr>
+      <!--
       <table>
         <tr>
           <th>vs_USER</th>
@@ -55,7 +67,7 @@
           <td th:text="${game.date}"></td>
         </tr>
       </table>
-
+-->
       <button
         type="button"
         class="btn btn-primary btn-lg"

@@ -59,19 +59,39 @@ public class GameController {
     }
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)
+    public ModelAndView showAll() {
+
+        ModelAndView mv =  new ModelAndView("history");
+
+        mv.addObject("message", "thisismsg");
+        mv.addObject("game_ID", "ABC");
+        mv.addObject("player1", "SSSS");
+        mv.addObject("date", "2018-01-01");
+
+        /*This not working. findByplayer1 is empty*/
+        List<Game> g = gameRepository.findByplayer1(LoginController.name);
+        mv.addObject("games", g);
+
+        return mv;
+    }
+
+    /*
+    @RequestMapping(value = "/history", method = RequestMethod.GET)
     public
     ModelAndView
     showAll() {
+
         ModelAndView mv =  new ModelAndView("redirect:/history");
         //System.out.println(gameRepository.findAll().getClass());
         List<Game> g = gameRepository.findByplayer1(LoginController.name);
-        mv.addObject("games", g);
+        mv.addObject("games", "hello");
+
         // for (Game g :  gameRepository.findByplayer1(LoginController.name)){
         //    System.out.println(g.getPlayer1());
         // }
         return mv;
     }
-
+*/
 
     @GetMapping(path="/allGame")
     public @ResponseBody Iterable<Game> getAllGame() {
@@ -79,5 +99,27 @@ public class GameController {
         return gameRepository.findAll();
     }
 
+
+
+
+/*
+    @Controller
+    public class StudentController {
+        @RequestMapping(value = "/student", method = RequestMethod.GET)
+        public ModelAndView student() {
+            return new ModelAndView("student", "command", new Student());
+        }
+        @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+        public String addStudent(@ModelAttribute("SpringWeb")Student student,
+
+                                 ModelMap model) {
+            model.addAttribute("name", student.getName());
+            model.addAttribute("age", student.getAge());
+            model.addAttribute("id", student.getId());
+
+            return "result";
+        }
+    }
+    */
 
 }
