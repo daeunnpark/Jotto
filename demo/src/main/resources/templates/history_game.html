@@ -102,6 +102,10 @@
               <th>WORD</th>
               <th>COUNT</th>
             </tr>
+            <tr th:each="log : ${logs}">
+             <td type="text" th:value="${log.word}">
+             </td>
+            </tr>
             </thead>
             <tbody id="computer_table"></tbody>
           </table>

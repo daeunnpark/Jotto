@@ -50,12 +50,12 @@ $("#inputform").submit(function (e) {
   var value = document.getElementById("secret_word").value;
   if (is_valid(value)) {
     computerWord = value;
-    //set_secret_word_UI(value);
+    set_secret_word_UI(value);
     $("#secretWordModal").modal("hide");
   }
   return false;
 });
-/*
+
 function set_secret_word_UI(str) {
   // User chooses computer's secret word
   document.getElementById("comp_letter_1").value = str.charAt(0);
@@ -69,7 +69,7 @@ function set_secret_word_UI(str) {
   document.getElementById("user_letter_3").value = "?";
   document.getElementById("user_letter_4").value = "?";
   document.getElementById("user_letter_5").value = "?";
-}*/
+}
 
 $("#inputform2").submit(function(event) {
   var url = "/guess"; // the script where you handle the form input.
