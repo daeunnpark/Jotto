@@ -38,7 +38,7 @@ $(document).ready(function() {
     /*alert("Word list is loaded");*/
     var word_list = response;
     dictArray = word_list.split("\n");
-    userWord = random(dictArray);
+    userWord = random(dictArray).toUpperCase();
     currentArray = dictArray;
   });
 });
@@ -49,11 +49,27 @@ $("#inputform").submit(function (e) {
   e.preventDefault();
   var value = document.getElementById("secret_word").value
   if (is_valid(value)) {
-    computerWord = value;
+    computerWord = value.toUpperCase();
+    set_secret_word_UI(value)
     $("#secretWordModal").modal("hide");
   }
   return false;
 });
+
+function set_secret_word_UI(str) {
+  // User chooses computer's secret word
+  document.getElementById("comp_letter_1").value = str.charAt(0);
+  document.getElementById("comp_letter_2").value = str.charAt(1);
+  document.getElementById("comp_letter_3").value = str.charAt(2);
+  document.getElementById("comp_letter_4").value = str.charAt(3);
+  document.getElementById("comp_letter_5").value = str.charAt(4);
+
+  document.getElementById("user_letter_1").value = "?";
+  document.getElementById("user_letter_2").value = "?";
+  document.getElementById("user_letter_3").value = "?";
+  document.getElementById("user_letter_4").value = "?";
+  document.getElementById("user_letter_5").value = "?";
+}
 
 $("#inputform2").submit(function(event) {
   var url = "/guess"; // the script where you handle the form input.
@@ -165,7 +181,7 @@ function user_guess() {
           char5 === ""
       )
   ) {
-    var myGuess = (char1 + char2 + char3 + char4 + char5);
+    var myGuess = (char1 + char2 + char3 + char4 + char5).toUpperCase();
 
     numUserGuess++;
     userGuessList.push(myGuess);
@@ -238,6 +254,7 @@ function checkGuess(guess, word, player) {
   if (guess === word) {
     winner = player;
     saveHistory();
+    $("#submitbtn2").attr("disabled", "disabled");
     popUpWinner();
   }
 }
