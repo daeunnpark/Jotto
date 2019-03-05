@@ -35,7 +35,7 @@ $(document).ready(function() {
     /*alert("Word list is loaded");*/
     var word_list = response;
     dictArray = word_list.split("\n");
-    userWord = random(dictArray);
+    userWord = random(dictArray).toUpperCase();
     currentArray = dictArray;
   });
 });
@@ -163,11 +163,6 @@ function color_code(letter, color) {
 }
 /* event handler helper function end */
 
-/* User function start */
-function user_init() {
-  computerWord = document.getElementById("secret_word").value;
-}
-
 function user_guess() {
   var table = document.getElementById("userGuessTable");
   var char1 = document.getElementById("letter_1").value;
@@ -185,7 +180,8 @@ function user_guess() {
       char5 === ""
     )
   ) {
-    var myGuess = char1 + char2 + char3 + char4 + char5;
+
+    var myGuess = (char1 + char2 + char3 + char4 + char5).toUpperCase();
 
     numUserGuess++;
     userGuessList.push(myGuess);
@@ -350,7 +346,8 @@ function saveHistory() {
 }
 
 function popUpWinner() {
-  alert("Winner is " + winner);
+  alert("Winner is " + winner+ ", userword = " + userWord);
+
   //pop up winner window
   //end the game
 }
