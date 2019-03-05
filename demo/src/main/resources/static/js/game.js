@@ -43,15 +43,17 @@ $(document).ready(function() {
 $("#inputform").submit(function(e) {
   e.preventDefault();
   var value = document.getElementById("secret_word").value;
+  alert(value);
+
   if (is_valid(value)) {
-    computerWord = value;
-    set_secret_word(computerWord);
+    computerWord = value.toUpperCase();
+    set_secret_word_UI(computerWord);
     $("#secretWordModal").modal("hide");
   }
   return false;
 });
 
-function set_secret_word(str) {
+function set_secret_word_UI(str) {
   // User chooses computer's secret word
   document.getElementById("comp_letter_1").value = str.charAt(0);
   document.getElementById("comp_letter_2").value = str.charAt(1);
@@ -113,23 +115,28 @@ document.querySelectorAll(".letterboard td").forEach(e =>
 
 /* event handler helper function start */
 function is_valid(guess) {
+  guess = guess.toLowerCase();
+
   if (dictArray.includes(guess)) {
     /*alert("List contains this word : " + guess);*/
     // Reset input field
+    /*
     document.getElementById("letter_1").value = "";
     document.getElementById("letter_2").value = "";
     document.getElementById("letter_3").value = "";
     document.getElementById("letter_4").value = "";
     document.getElementById("letter_5").value = "";
-
+*/
     return true;
   } else {
     // Reset input field
+    /*
     document.getElementById("letter_1").value = "";
     document.getElementById("letter_2").value = "";
     document.getElementById("letter_3").value = "";
     document.getElementById("letter_4").value = "";
     document.getElementById("letter_5").value = "";
+    */
 
     alert("Not a know word: " + guess);
   }
@@ -257,6 +264,7 @@ function checkGuess(guess, word, player) {
 
 function saveHistory() {
   //SEND GAME DATAS
+  /*
   $.ajax({
     type: "POST",
 
@@ -338,7 +346,7 @@ function saveHistory() {
         alert("Error: " + e);
       }
     });
-  }
+  }*/
 }
 
 function popUpWinner() {
