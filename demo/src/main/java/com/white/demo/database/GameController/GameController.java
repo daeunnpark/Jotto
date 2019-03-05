@@ -43,7 +43,7 @@ public class GameController {
 
     @GetMapping(path="/addGame") // Map ONLY GET Requests
     public @ResponseBody String addNewGame (@RequestParam int game_ID,
-                                            @RequestParam String Player1, @RequestParam String Player2, @RequestParam String winner) {
+                                            @RequestParam String Player1) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
@@ -51,9 +51,9 @@ public class GameController {
         Game g = new Game();
         g.setGame_ID(game_ID);
         g.setPlayer1(Player1);
-        g.setPlayer2(Player2);
+        g.setPlayer2("COMPUTER");
         g.setDate(d.toGMTString());
-        g.setWinner(winner);
+
         this.gameRepository.save(g);
 
         return "GameCount: " + gamecount;
@@ -73,11 +73,8 @@ public class GameController {
         return mv;
     }
 
-    @RequestMapping(value = "/saveGame", method = RequestMethod.POST)
-    public @ResponseBody String saveGame(@RequestParam(value = "player1") String player1, @RequestParam(value= "winner") String
-            winner, @RequestParam(value = "userWord") String userWord,
-                                         @RequestParam(value = "computerWord") String computerWord) {
-
+    @RequestMapping(value = "/saveGame")
+    public @ResponseBody String saveGame(@RequestParam(value = "player1") String player1) {
         Date d = new Date();
         int largeID = -1;
         for (Game ga : gameRepository.findAll()){
@@ -94,10 +91,10 @@ public class GameController {
         g.setPlayer1(player1);
         g.setPlayer2("COMPUTER");
         g.setDate(d.toGMTString());
-        g.setUserWord(userWord);
-        g.setComputerWord(computerWord);
-        g.setWinner(winner);
+
+        //DEBUG PRINTINGS
         this.gameRepository.save(g);
+        System.out.println("game saved");
 
         return "GAME SAVED";
     }

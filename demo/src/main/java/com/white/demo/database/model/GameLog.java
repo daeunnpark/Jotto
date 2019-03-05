@@ -19,21 +19,45 @@ public class GameLog {
 
     private int game_ID;
 
-    private String date;
-
-
-
     private String word;
 
-    private int letterCount;
+    private int letter_count;
+
+    private String winner;
+
+    private String user_word;
+
+    private String computer_word;
+
+
+    public String getWinner(){
+        return this.winner;
+    }
+
+    public void setWinner(String winner){
+        this.winner = winner;
+    }
+
+    public String getUserWord(){
+        return this.user_word;
+    }
+
+    public void setUserWord(String userWord){
+        this.user_word = userWord;
+    }
+
+    public String getComputerWord(){
+        return this.computer_word;
+    }
+
+    public void setComputerWord(String computerWord){
+        this.computer_word= computerWord;
+    }
 
     public String getUsername(){
         return this.username;
     }
 
-    public String getDate(){
-        return this.date;
-    }
 
     public String getWord(){
         return this.word;
@@ -44,7 +68,7 @@ public class GameLog {
     }
 
     public int getCount(){
-        return this.letterCount;
+        return this.letter_count;
     }
 
     public void setUsername(String usn){
@@ -55,16 +79,13 @@ public class GameLog {
         this.game_ID = gid;
     }
 
-    public void setDate(String date){
-        this.date = date;
-    }
 
     public void setWord(String word){
         this.word = word;
     }
 
     public void setLetterCount(int count){
-        this.letterCount = count;
+        this.letter_count = count;
     }
 
 }

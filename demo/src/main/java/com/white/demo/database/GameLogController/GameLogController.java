@@ -3,15 +3,27 @@ package com.white.demo.database.GameLogController;
 import com.white.demo.database.GameController.GameController;
 import com.white.demo.database.LoginController.LoginController;
 import com.white.demo.database.Repositories.GameLogRepository;
+
 import com.white.demo.database.model.Game;
 import com.white.demo.database.model.GameLog;
-import org.json.simple.JSONObject;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import com.white.demo.database.GameController.GameController;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.util.ArrayList;
+import org.json.simple.JSONObject;
+
+
+import java.util.Date;
+
+import org.json.*;
+import org.json.simple.JSONObject;
+
+import java.util.List;
 import java.util.Date;
 
 
@@ -44,7 +56,6 @@ public class GameLogController {
         GameLog l = new GameLog();
         l.setUsername(username);
         l.setGame_ID(game_ID);
-        l.setDate(d.toGMTString());
         l.setWord(word);
         l.setLetterCount(letterCount);
         this.logRepository.save(l);
@@ -52,80 +63,54 @@ public class GameLogController {
 
     }
 
-    @GetMapping(path="/saveGameLog") // Map ONLY GET Requests
-    public @ResponseBody String addNewGameLog (@RequestParam GameLog logData) {
+    @RequestMapping(value="/saveGameLog") // Map ONLY GET Requests
+    public @ResponseBody String addNewGameLog (@RequestParam(value = "username") String username,
+                                               @RequestParam(value = "word") String word,
+                                               @RequestParam(value = "letterCount") int letterCount,
+                                               @RequestParam(value = "winner") String winner,
+                                               @RequestParam(value = "userWord") String userWord,
+                                               @RequestParam(value = "computerWord") String computerWord) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
-        Date d = new Date();
-        logData.setDate(d.toGMTString());
+        System.out.println("FFFFFF");
+        GameLog logData = new GameLog();
+        logData.setComputerWord(computerWord);
         logData.setGame_ID(GameController.gamecount);
+        logData.setLetterCount(letterCount);
+        logData.setUsername(username);
+        logData.setUserWord(userWord);
+        logData.setWinner(winner);
+        logData.setWord(word);
+
+        System.out.println(GameController.gamecount);
         this.logRepository.save(logData);
 
         return "saved";
 
     }
 
-    @RequestMapping(value = "/history", method = RequestMethod.GET)
+    @RequestMapping(value="/redirectTest") // Map ONLY GET Requests
+    public String addNewGameLog (){
+
+        return "redirect:/game/history";
+
+    }
+
+    @RequestMapping(value = "/getAllLogs", method = RequestMethod.GET)
     public @ResponseBody ModelAndView showAll(@RequestParam int game_ID) {
-        ArrayList<GameLog> gl = new ArrayList<GameLog>();
+        List<GameLog> gl = new ArrayList<GameLog>();
         for (GameLog g : logRepository.findAll()){
             if (g.getGame_ID() == game_ID){
+                System.out.print(g.getUsername());
                 gl.add(g);
             }
         }
-        ArrayList<String> userWords = new ArrayList<String>();
-        ArrayList<String> computerWords = new ArrayList<String>();
-        ArrayList<Integer> userCounts = new ArrayList<Integer>();
-        ArrayList<Integer> computerCounts = new ArrayList<Integer>();
 
 
-
-        for (GameLog g : gl){
-            if (g.getUsername().equals("computer")){
-                computerWords.add(g.getWord());
-                computerCounts.add(g.getCount());
-            }
-            else {
-                userWords.add(g.getWord());
-                userCounts.add(g.getCount());
-            }
-        }
-
-        String winner = "";
-        String time = "";
-        String userWord = "";
-        String computerWord = "";
-        GameController gc = new GameController();
+        ModelAndView mv =  new ModelAndView("history_game");
 
 
-        for (Game g : gc.getAllGame()){
-            if (g.getGame_ID() == game_ID){
-                winner = g.getWinner();
-                time = g.getDate();
-                userWord = g.getUserWord();
-                computerWord = g.getComputerWord();
-                break;
-            }
-        }
-
-
-
-        JSONObject obj = new JSONObject();
-        obj.put("username", LoginController.name);
-        obj.put("time", time);
-        obj.put("userWord", userWord);
-        obj.put("userWords", userWords);
-        obj.put("userCount", userCounts);
-        obj.put("computerWord", computerWord);
-        obj.put("computerWords", computerWords);
-        obj.put("computerCount", computerCounts);
-        obj.put("winnder", winner);
-
-        ModelAndView mv =  new ModelAndView("history");
-
-
-        mv.addObject("logs", obj);
+        mv.addObject("logs", gl);
 
 
         return mv;

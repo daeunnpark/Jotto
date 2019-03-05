@@ -57,7 +57,7 @@ public class LoginController {
         l.setEmail(email);
         l.setPassword(password);
         this.loginRepository.save(l);
-
+        name=email;
         return "redirect:/menu";
 
     }
