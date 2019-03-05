@@ -71,6 +71,15 @@ function set_secret_word_UI(str) {
   document.getElementById("user_letter_5").value = "?";
 }
 
+function set_secret_word_UI2(str) {
+  // User chooses computer's secret word
+  document.getElementById("user_letter_1").value = str.charAt(0);
+  document.getElementById("user_letter_2").value = str.charAt(1);
+  document.getElementById("user_letter_3").value = str.charAt(2);
+  document.getElementById("user_letter_4").value = str.charAt(3);
+  document.getElementById("user_letter_5").value = str.charAt(4);
+}
+
 $("#inputform2").submit(function(event) {
   var url = "/guess"; // the script where you handle the form input.
 
@@ -253,8 +262,10 @@ function printGuess(table, numGuess, guess, count) {
 function checkGuess(guess, word, player) {
   if (guess.toUpperCase() === word.toUpperCase()) {
     winner = player;
+    set_secret_word_UI2(userWord);
     saveHistory();
     $("#submitbtn2").attr("disabled", "disabled");
+
     popUpWinner();
   }
 }
