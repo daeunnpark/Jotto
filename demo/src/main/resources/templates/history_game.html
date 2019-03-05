@@ -1,185 +1,192 @@
 <!DOCTYPE html>
 <html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-  lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+        lang="en"
 >
-  <head>
-    <meta charset="UTF-8" />
+<head>
+  <meta charset="UTF-8" />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      th:href="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css}"
-      href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-    />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css}"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+  />
 
-    <script
-      th:src="@{http://code.jquery.com/jquery.js}"
-      src="http://code.jquery.com/jquery.js"
-    ></script>
-    <script
-      type="text/javascript"
-      th:src="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}"
-      src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
-    ></script>
+  <script
+          th:src="@{http://code.jquery.com/jquery.js}"
+          src="http://code.jquery.com/jquery.js"
+  ></script>
+  <script
+          type="text/javascript"
+          th:src="@{http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js}"
+          src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+  ></script>
 
-    <link
-      href="../static/css/history.css"
-      th:href="@{/css/history.css}"
-      rel="stylesheet"
-      media="screen"
-    />
-    <link
-      href="../static/css/modal_game.css"
-      th:href="@{/css/modal_game.css}"
-      rel="stylesheet"
-      media="screen"
-    />
-  </head>
+  <link
+          href="../static/css/history.css"
+          th:href="@{/css/history.css}"
+          rel="stylesheet"
+          media="screen"
+  />
+  <link
+          href="../static/css/modal_game.css"
+          th:href="@{/css/modal_game.css}"
+          rel="stylesheet"
+          media="screen"
+  />
+</head>
 
-  <body>
-    <section>
-      <div class="container">
-        <!-- START COMPUTER -->
-        <div class="col-md-6">
-          <div class="card text-center">
-            <div class="title">
-              <i class="fa fa-robot" aria-hidden="true"></i>
-              <h2>Computer</h2>
-            </div>
-
-            <div class="col-md-12">
-              <table class="wordTable">
-                <tbody>
-                  <tr>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="option">
-              <table class="Table">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>WORD</th>
-                    <th>COUNT</th>
-                  </tr>
-                </thead>
-                <tbody id="computer_table"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <!-- END COMPUTER -->
-
-        <!-- START USER -->
-        <div class="col-md-6">
-          <div class="card text-center">
-            <div class="title">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <h2>User</h2>
-            </div>
-
-            <div class="col-md-12">
-              <table class="wordTable">
-                <tbody>
-                  <tr>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        style="text-transform:uppercase"
-                        class="form-control"
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="option">
-              <table class="Table" id="userGuessTable">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>WORD</th>
-                    <th>COUNT</th>
-                  </tr>
-                </thead>
-
-                <tbody id="user_table"></tbody>
-              </table>
-            </div>
-          </div>
+<body>
+<section>
+  <div class="container">
+    <!-- START COMPUTER -->
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="title">
+          <i class="fa fa-robot" aria-hidden="true"></i>
+          <h2>Computer</h2>
         </div>
 
-        <!-- END USER -->
+        <div class="col-md-12">
+          <table class="wordTable">
+            <tbody>
+            <tr>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="option">
+          <table class="Table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>WORD</th>
+              <th>COUNT</th>
+            </tr>
+            </thead>
+            <tbody id="computer_table"></tbody>
+          </table>
+        </div>
       </div>
-    </section>
-  </body>
+    </div>
+    <!-- END COMPUTER -->
+
+    <!-- START USER -->
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="title">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <h2>User</h2>
+        </div>
+
+        <div class="col-md-12">
+          <table class="wordTable">
+            <tbody>
+            <tr>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+              <td>
+                <input
+                        type="text"
+                        style="text-transform:uppercase"
+                        class="form-control"
+                />
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="option">
+          <table class="Table" id="userGuessTable">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>WORD</th>
+              <th>COUNT</th>
+            </tr>
+            </thead>
+
+            <tbody id="user_table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- END USER -->
+    <div>
+
+      <tr th:each="log : ${logs}">
+          <span th:text="${log.word}">
+
+      </tr>
+    </div>
+  </div>
+</section>
+</body>
 </html>

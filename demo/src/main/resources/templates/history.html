@@ -58,37 +58,32 @@
 
 
 
-  <form name = "" method = "GET" action="/log/getAllLogs">
-    <ul class="timeline">
-      <!--
-      <li class="event" th:data-date="${game.date}">
-        <h3 th:text="${game.player1}">VS </h3>
-        <button
-          type="button"
-          class="btn btn-primary btn-lg"
-          data-toggle="modal"
-          data-target="#historyModal1"
-        >
-        </button>
+  <ul class="timeline">
+    <!--
+    <li class="event" th:data-date="${game.date}">
+      <h3 th:text="${game.player1}">VS </h3>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg"
+        data-toggle="modal"
+        data-target="#historyModal1"
+      >
+      </button>
+    </li>
+    -->
+
+    <tr th:each="game : ${games}">
+      <li class="event" th:data-date= "${game.date}">
+        <form th:action="@{/log/getAllLogs/__${game.game_ID}__}" method="GET">
+          <div class="flex dark">
+            <button type="submit" class="bttn-dark">See The Game Logs</button>
+          </div>
+        </form>
       </li>
-      -->
-
-      <tr th:each="game : ${games}">
-        <li class="event" th:data-date= "${game.date}">
-          <button
-                  type="submit"
-                  class="btn btn-primary btn-lg"
-                  data-toggle="modal"
-                  data-target="#historyModal"
-          >
-            VS Computer
-          </button>
-        </li>
-      </tr>
+    </tr>
 
 
-    </ul>
-  </form>
+  </ul>
 
 
   <!--

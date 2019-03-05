@@ -47,15 +47,15 @@ $(document).ready(function() {
 
 $("#inputform").submit(function (e) {
   e.preventDefault();
-  var value = document.getElementById("secret_word").value
+  var value = document.getElementById("secret_word").value;
   if (is_valid(value)) {
-    computerWord = value.toUpperCase();
-    set_secret_word_UI(value)
+    computerWord = value;
+    //set_secret_word_UI(value);
     $("#secretWordModal").modal("hide");
   }
   return false;
 });
-
+/*
 function set_secret_word_UI(str) {
   // User chooses computer's secret word
   document.getElementById("comp_letter_1").value = str.charAt(0);
@@ -69,7 +69,7 @@ function set_secret_word_UI(str) {
   document.getElementById("user_letter_3").value = "?";
   document.getElementById("user_letter_4").value = "?";
   document.getElementById("user_letter_5").value = "?";
-}
+}*/
 
 $("#inputform2").submit(function(event) {
   var url = "/guess"; // the script where you handle the form input.
@@ -116,7 +116,7 @@ document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("cl
 
 /* event handler helper function start */
 function is_valid(guess) {
-  if (dictArray.includes(guess)) {
+  if (dictArray.includes(guess.toLowerCase())) {
     alert("List contains this word : " + guess);
     // Reset input field
     document.getElementById("letter_1").value = "";
@@ -216,8 +216,8 @@ function random(arr) {
 }
 
 function count(word1, word2) {
-  var charArr1 = word1.split("");
-  var charArr2 = word2.split("");
+  var charArr1 = word1.toUpperCase().split("");
+  var charArr2 = word2.toUpperCase().split("");
   var i;
   var count1 = 0;
   for (i = 0; i < charArr1.length; i++) {
@@ -251,7 +251,7 @@ function printGuess(table, numGuess, guess, count) {
 }
 
 function checkGuess(guess, word, player) {
-  if (guess === word) {
+  if (guess.toUpperCase() === word.toUpperCase()) {
     winner = player;
     saveHistory();
     $("#submitbtn2").attr("disabled", "disabled");

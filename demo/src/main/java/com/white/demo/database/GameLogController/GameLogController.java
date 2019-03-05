@@ -96,8 +96,8 @@ public class GameLogController {
 
     }
 
-    @RequestMapping(value = "/getAllLogs", method = RequestMethod.GET)
-    public @ResponseBody ModelAndView showAll(@RequestParam int game_ID) {
+    @RequestMapping(value = "/getAllLogs/{game_ID}", method = RequestMethod.GET)
+    public @ResponseBody ModelAndView showAll(@PathVariable int game_ID) {
         List<GameLog> gl = new ArrayList<GameLog>();
         for (GameLog g : logRepository.findAll()){
             if (g.getGame_ID() == game_ID){
