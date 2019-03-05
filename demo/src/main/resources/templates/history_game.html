@@ -103,8 +103,11 @@
               <th>COUNT</th>
             </tr>
             <tr th:each="log : ${logs}">
-             <td type="text" th:value="${log.word}">
+              <td th:text="0"></td>
+             <td th:text="${log.word}">
              </td>
+              <td th:text="${log.count}">
+              </td>
             </tr>
             </thead>
             <tbody id="computer_table"></tbody>
@@ -174,6 +177,12 @@
               <th>WORD</th>
               <th>COUNT</th>
             </tr>
+            <tr th:each="log2 : ${logs2}">
+              <td text="0"></td>
+              <td th:text="${log2.word}">
+              </td>
+              <td th:text="${log2.count}">
+              </td>
             </thead>
 
             <tbody id="user_table"></tbody>

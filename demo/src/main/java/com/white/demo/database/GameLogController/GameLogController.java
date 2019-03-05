@@ -99,10 +99,17 @@ public class GameLogController {
     @RequestMapping(value = "/getAllLogs/{game_ID}", method = RequestMethod.GET)
     public @ResponseBody ModelAndView showAll(@PathVariable int game_ID) {
         List<GameLog> gl = new ArrayList<GameLog>();
+        List<GameLog> gl2 = new ArrayList<GameLog>();
         for (GameLog g : logRepository.findAll()){
             if (g.getGame_ID() == game_ID){
-                System.out.print(g.getUsername());
-                gl.add(g);
+                if (g.getUsername().equals("Computer")) {
+
+
+                    gl.add(g);
+                }
+                else {
+                    gl2.add(g);
+                }
             }
         }
 
@@ -111,6 +118,7 @@ public class GameLogController {
 
 
         mv.addObject("logs", gl);
+        mv.addObject("logs2", gl2);
 
 
         return mv;
