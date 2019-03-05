@@ -2,8 +2,8 @@
 //for history
 var currentUserName = "";
 var time;
-var userWord="";
-var computerWord="";
+var userWord = "";
+var computerWord = "";
 var userGuessList = [];
 var userCorrectCountList = [];
 var computerGuessList = [];
@@ -24,7 +24,7 @@ var firstTimePlaying = 1;
 //for legal_words.txt
 var dictArray = [];
 var word_list_URL =
-    "https://raw.githubusercontent.com/daeunnpark/daeunnpark.github.io/master/legal_words.txt";
+  "https://raw.githubusercontent.com/daeunnpark/daeunnpark.github.io/master/legal_words.txt";
 
 // Global variables end
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 /* attach a submit handler to the form */
 
-$("#inputform").submit(function (e) {
+$("#inputform").submit(function(e) {
   e.preventDefault();
   var value = document.getElementById("secret_word").value;
   if (is_valid(value)) {
@@ -109,19 +109,21 @@ document.getElementById("submitbtn2").addEventListener("submit", function() {
 });
 */
 
-document.querySelectorAll(".letterboard td").forEach(e => e.addEventListener("click", function() {
-  if (this.style.backgroundColor == "green") {
-    this.style.backgroundColor = "red";
-  } else if (this.style.backgroundColor == "red") {
-    this.style.backgroundColor = "white";
-  } else if (this.style.backgroundColor == "white") {
-    this.style.backgroundColor = "green";
-  } else {
-    // first click
-    this.style.backgroundColor = "green";
-  }
-  color_code(this.textContent.trim(), this.style.backgroundColor);
-}));
+document.querySelectorAll(".letterboard td").forEach(e =>
+  e.addEventListener("click", function() {
+    if (this.style.backgroundColor == "green") {
+      this.style.backgroundColor = "red";
+    } else if (this.style.backgroundColor == "red") {
+      this.style.backgroundColor = "white";
+    } else if (this.style.backgroundColor == "white") {
+      this.style.backgroundColor = "green";
+    } else {
+      // first click
+      this.style.backgroundColor = "green";
+    }
+    color_code(this.textContent.trim(), this.style.backgroundColor);
+  })
+);
 
 /* event handler helper function start */
 function is_valid(guess) {
@@ -160,8 +162,8 @@ function color_code(letter, color) {
 
     if (str.includes(letter)) {
       table.rows[r].cells[1].innerHTML = str.replace(
-          re,
-          '<span style="background-color:' + color + '">' + letter + "</span>"
+        re,
+        '<span style="background-color:' + color + '">' + letter + "</span>"
       );
     }
   }
@@ -169,7 +171,7 @@ function color_code(letter, color) {
 /* event handler helper function end */
 
 /* User function start */
-function user_init(){
+function user_init() {
   computerWord = document.getElementById("secret_word").value;
 }
 
@@ -182,13 +184,13 @@ function user_guess() {
   var char5 = document.getElementById("letter_5").value;
 
   if (
-      !(
-          char1 === "" ||
-          char2 === "" ||
-          char3 === "" ||
-          char4 === "" ||
-          char5 === ""
-      )
+    !(
+      char1 === "" ||
+      char2 === "" ||
+      char3 === "" ||
+      char4 === "" ||
+      char5 === ""
+    )
   ) {
     var myGuess = (char1 + char2 + char3 + char4 + char5).toUpperCase();
 
@@ -273,56 +275,71 @@ function checkGuess(guess, word, player) {
 var counter1 = 0;
 var counter = 0;
 function userSaveLogs(callback) {
-
-
   $.ajax({
     url: "/log/saveGameLog",
     type: "GET",
-    data: "username=" + "user@a.a" + "&word=" + userGuessList[counter] + "&letterCount=" + userCorrectCountList[counter] +
-        "&winner=" + winner + "&userWord=" + userWord + "&computerWord=" + computerWord,
-    success:function(res) {
+    data:
+      "username=" +
+      "user@a.a" +
+      "&word=" +
+      userGuessList[counter] +
+      "&letterCount=" +
+      userCorrectCountList[counter] +
+      "&winner=" +
+      winner +
+      "&userWord=" +
+      userWord +
+      "&computerWord=" +
+      computerWord +
+      "&numLine=" +
+      (counter + 1),
+    success: function(res) {
       counter++;
       if (counter < userGuessList.length) userSaveLogs();
     }
   });
   callback();
-
 }
 
-
-
 function computerSaveLogs() {
-
-
   $.ajax({
     type: "GET",
 
     url: "/log/saveGameLog",
 
-    data: "username=" + "Computer" + "&word=" + computerGuessList[counter] + "&letterCount=" + computerCorrectCountList[counter] +
-        "&winner=" + winner + "&userWord=" + userWord + "&computerWord=" + computerWord,
-    success:function() {
+    data:
+      "username=" +
+      "Computer" +
+      "&word=" +
+      computerGuessList[counter] +
+      "&letterCount=" +
+      computerCorrectCountList[counter] +
+      "&winner=" +
+      winner +
+      "&userWord=" +
+      userWord +
+      "&computerWord=" +
+      computerWord +
+      "&numLine=" +
+      (counter1 + 1),
+    success: function() {
       counter1++;
       if (counter < computerGuessList.length) computerSaveLogs();
     }
-
   });
-
 }
 
-function saveHistory(){
+function saveHistory() {
   //SEND GAME DATAS
   $.ajax({
     type: "GET",
 
     url: "/game/saveGame",
 
-    data: "player1=" + "user@a.a",
-
+    data: "player1=" + "user@a.a"
   });
 
   userSaveLogs(computerSaveLogs);
-
 
   /*
     for (var z = 0; z < computerGuessList.length; z++ ) {
@@ -335,13 +352,7 @@ function saveHistory(){
 
       });
     }*/
-
-
-
-
 }
-
-
 
 function popUpWinner() {
   alert("Winner is " + winner);

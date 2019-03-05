@@ -29,6 +29,15 @@ public class GameLog {
 
     private String computer_word;
 
+    private int numLine;
+
+    public int getNumLine(){
+        return this.numLine;
+    }
+
+    public void setNumLine(int numLine){
+        this.numLine = numLine;
+    }
 
     public String getWinner(){
         return this.winner;

@@ -69,7 +69,8 @@ public class GameLogController {
                                                @RequestParam(value = "letterCount") int letterCount,
                                                @RequestParam(value = "winner") String winner,
                                                @RequestParam(value = "userWord") String userWord,
-                                               @RequestParam(value = "computerWord") String computerWord) {
+                                               @RequestParam(value = "computerWord") String computerWord,
+                                               @RequestParam(value = "numLine")int numLine) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         System.out.println("FFFFFF");
@@ -81,6 +82,7 @@ public class GameLogController {
         logData.setUserWord(userWord);
         logData.setWinner(winner);
         logData.setWord(word);
+        logData.setNumLine(numLine);
 
         System.out.println(GameController.gamecount);
         this.logRepository.save(logData);
