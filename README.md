@@ -7,9 +7,7 @@ Please login with:
 username: "user@a.a"
 password: "password"
 
-http://htmlpreview.github.io/?https://github.com/twbs/bootstrap/blob/gh-pages/2.3.2/index.html
-Website : http://htmlpreview.github.com/?https://github.com/tvetere/team_white_hw1/blob/master/jotto_website/index.html
-http://htmlpreview.github.io/?https://raw.githubusercontent.com/tvetere/team_white_hw1/master/jotto_website/index.html?token=AHKWT4QYAYKMEULMW4AHSAC5AFQHO
+Website: https://zjv7ekqecmyr5rqay2nrlw-on.drv.tw/jotto_website/Copy%20of%20index.html
 
 ## UI
 ### Sign Up
