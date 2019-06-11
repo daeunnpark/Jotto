@@ -7,7 +7,7 @@ Please login with:
 username: "user@a.a"
 password: "password"
 
-Website: https://zjv7ekqecmyr5rqay2nrlw-on.drv.tw/jotto_website/Copy%20of%20index.html
+Website: https://zjv7ekqecmyr5rqay2nrlw-on.drv.tw/SpringJotto/
 
 ## UI
 ### Sign Up
